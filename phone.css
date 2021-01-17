@@ -295,11 +295,13 @@
 }
 #maindiv{
     /* background-color: lawngreen; */
-    padding: 10px 0;
+    padding: 8px 0;
     text-align: center;
     width: 280px;
     height:inherit;
     overflow: auto;
+    font-size: 20px;
+    color: gray;
 }
 #del_icon{
     /* background-color: peru; */
@@ -340,10 +342,59 @@
 .pick_num{
     /* background-color: indianred; */
     padding-top: 8px;
-    font-size: 20px;
+    font-size: 25px;
     height: 40px;
     width: 40px;
     border-radius: 50%;
     text-align: center;
+    color: rgb(27, 27, 197);
+}
+/* .eff_num{
+    box-shadow: 5px 5px 20px rgb(148, 143, 143);
+    background-color: rgba(148, 143, 143,0.3)
+} */
+#network{
+    z-index: 6  ;
+    position: absolute;
+    top: 77px;
+    width: 329px;
+    height: 495px;
+    background-color: rgba(0, 0, 0, 0.555);
+    padding:180px 60px ;
+    box-sizing: border-box;
+    display: none;
+}
+#net_modal{
+    width: 200px;
+    height: 100px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+
+}
+#c_sim{
+    /* background-color: violet; */
+    padding: 5px;
+    font-size: 10px;
+    font-weight: 600;
+
+}
+.sim{
+    background-color: turquoise;
+    padding: 6px;
     color: gray;
+}
+#sim_airtel{
+    background-color: yellowgreen;
+}
+#ussd{
+    color: gray;
+    font-size: 12px;
+    padding: 8px;
+}
+#pos{
+    display: flex;
+}
+.d_click{
+margin-left: 130px;
+/* align-self: flex-end; */
 }
