@@ -206,7 +206,7 @@
     position: relative;
     height: 494px;
     width: 329px;
-    background-color: whitesmoke;
+    background-color: white;
     display: none;
 
 }
@@ -233,12 +233,7 @@
     justify-content: space-around;
     padding-top: 5px;
 }
-#scrollconlist{
-    position: relative;
-    top: 50px;
-    height: 380px;
-    overflow: auto;
-}
+
 .con_icons{
     background-color: transparent;
     width: 30px;
@@ -248,11 +243,7 @@
     margin:-5px 0 5px 15px;
     /* width: 2rem;  */
 }
-#main_list{
-    width: inherit;
-    /* background-color: rebeccapurple; */
 
-}
 #_pad{
     position: relative;
     z-index: 5;
@@ -275,7 +266,9 @@
 #suggest_num{
     /* background-color: tomato; */
     width: inherit;
-    height: inherit;
+    height: 180px;
+    z-index: -1;
+    overflow: auto;
 }
 #real_dial{
     position: absolute;
@@ -379,22 +372,194 @@
 
 }
 .sim{
-    background-color: turquoise;
+    /* background-color: turquoise; */
     padding: 6px;
     color: gray;
 }
-#sim_airtel{
+/* #sim_airtel{
     background-color: yellowgreen;
-}
+} */
 #ussd{
     color: gray;
     font-size: 12px;
     padding: 8px;
 }
+.recharge{
+    color: rgb(211, 204, 204);
+    font-size: 14px;
+}
 #pos{
     display: flex;
 }
 .d_click{
-margin-left: 130px;
+margin-left: 180px;
 /* align-self: flex-end; */
+}
+#end_call{
+    background-color: red;
+    box-shadow: 0 2px 5px rgb(148, 144, 144);
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+}
+#ans_call{
+    display: none;
+    width: 329px;
+    height: 495px;
+    background-color: rgb(255, 255, 255);
+}
+#face{
+    /* background-color: cornflowerblue; */
+    height: 200px;
+}
+#call_icons{
+    /* background-color: chartreuse; */
+    height: 290px;
+}
+.c_cons{
+    /* background-color: yellow; */
+    height: 95px;
+    padding-top: 2px;
+    margin: 2px 0;
+    width: inherit;
+    display: flex;
+    justify-content: space-around;
+}
+.pick_c{
+    color: rgb(71, 68, 69);
+    padding: 15px;
+    /* width: 100px; */
+    font-size: 16px;
+}
+.fas1, .bi1{
+    /* padding-left: 10px; */
+    font-size: 25px;
+    color: darkgray;
+    /* background-color: cyan; */
+}
+#r_pos{
+    padding-top: 25px;
+}
+#con_face{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+#con_pic{
+    background-color: turquoise;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    
+    padding-left:10px;
+}
+.bi2{
+    position: relative;
+
+    top: -30px;
+    left: -5px;
+    font-size: 78px;
+    color: white;
+ 
+ }
+#call_by{
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(184, 179, 179);
+    width: 150px;
+    text-align: center;
+    height: 25px;
+    padding: 5px;
+}
+#place_sim{
+    color: orange;
+}
+#disp_num{
+    /* background-color: orchid; */
+    /* width: 150px; */
+    text-align: center;
+    height: 40px;
+    font-size: 25px;
+}
+#disp_sec{
+    /* background-color: orchid; */
+    color: grey;
+    /* width: 150px; */
+    text-align: center;
+    height: 15px;
+    font-size: 12px;
+}
+.ho
+.home3{
+    position: absolute;
+    top: 550px;
+    left: 185px;
+    height: 10px;
+    width: 30px;
+    background-color: rgb(143, 134, 134);
+    border-radius: 10px;
+}
+#scrollconlist{
+    position: relative;
+    top: 30px;
+    height: 320px;
+    overflow: auto;
+    /* background-color: yellow; */
+}
+#main_list{
+    width: inherit;
+    /* background-color: rebeccapurple; */
+    /* height: 500px; */
+}
+.con_list{
+    /* background-color: violet; */
+    margin-top: 5px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.recent{
+    /* background-color: yellowgreen; */
+    width: 83%;
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+}
+.str_call{
+    background-color: darkgreen;
+    height: inherit;
+    width: 15%;
+}
+.face_con{
+    /* background-color: peru; */
+    padding: 7px 3px ;
+    width: 20%;
+}
+.con_info{
+    /* background-color: red; */
+    width: 75%;
+}
+.circle_con{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: maroon;
+}
+.name{
+    /* background-color: mediumblue; */
+    height: 40%;
+    font-size: 16px;
+}
+.time{
+    /* height: 20%; */
+    /* background-color: mediumvioletred; */
+    color: rgb(143, 136, 136);
+    font-size: 8px;
+}
+.sim2{
+    color: orange;
+    font-size: 8px;
+    /* height: 20%; */
+    /* background-color: green; */
 }
