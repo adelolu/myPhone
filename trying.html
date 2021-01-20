@@ -9,50 +9,51 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="phone.css">
+    <style>
+        audio {
+            background-color: teal;
+            height: 30px;
+            width: 200px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div id="ans_call"  class="ml-2">
-        <div id="face">
-            <div id="con_face">
-                <div id="con_pic"><i class="bi bi2 bi-person-fill"></i></div>
-            </div>
-            <div id="call_by">Calling via <span id="place_sim">Airtel</span></div>
-            <div id="disp_num"></div>
-        </div>
-        <div id="call_icons">
-            <div class="c_cons">
-                <div class="pick_c"><i class="fas fas1 fa-microphone-slash" style=" padding-left: 5px;"></i>
-                    <div>Mute</div>
-                </div>
-                <div class="pick_c"><i class="fas fas1 fa-grip-vertical" style=" padding-left: 15px;"></i>
-                    <div>Keypad</div>
-                </div>
-                <div class="pick_c" style="padding: 5px;"><i class="bi bi1 bi-volume-up-fill"
-                        style="  margin-top: -50px; padding-left: 15px;"></i>
-                    <div>Speaker</div>
-                </div>
-            </div>
-            <div class="c_cons">
-                <div class="pick_c"><i class="bi bi1 bi-telephone-plus-fill" style=" padding-left: 12px;"></i>
-                    <div>Add call</div>
-                </div>
-                <div class="pick_c " style="padding: 25px;"><i class="fas fas1 fa-sim-card"
-                        style=" padding-left: 25px; font-size: 25px;"></i>
-                    <div>Change sim</div>
-                </div>
-                <div class="pick_c" style="width:70px; height: 50px;  font-size: 25px;"></div>
+    <audio id="coco">
+        <!-- <source src="horse.ogg" type="audio/ogg"> -->
+        <source src="audio/temi.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <button onclick="play()">play song</button>
+    <div id="dis"></div>
+    <script>
+        var song = document.getElementById('coco')
+        var long = document.getElementById('dis')
+        // function play() {
+         setTimeout(() => {
+            // song.play()
+            setTimeout(() => {
+                song.pause()
+                song.src = ' '
+                song.src = 'audio/temi.mp3'
+                song.play()
+                console.log('stopped');
+                var a = coco.duration
+                b = a / 60
+                b = Math.round(b)
+                $('#dis').text(b)
+            }, 45000);
+         }, 2000);
+        // }/
+        //   player()
+        // var da = new Date
+        // var n = da.getSeconds(0)
+        // console.log(n);
+        // var arr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 2, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+        // long.innerHTML += `${arr[n]}`
 
-            </div>
-            <div class="c_cons" id="r_pos">
-                <div id="end_call"></div>
-                <div style="z-index: 5;" class="home2"></div>
-
-            </div>
-        </div>
-    </div>
-
+    </script>
     <script src="bootstrap/js/popper.min.js"></script>
     <script src="bootstrap/js/jquery.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>

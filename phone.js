@@ -122,35 +122,14 @@ var info = []
 var low = ['temi', 'tobi', 'tolu', 'emma', 'victoria', 'tomi', 'mum', 'victor', 'pelumi', 'kenn', 'tutu', 'ola', 'dipo']
 function loop(low) {
     svg = ''
-    for (let i = 0; i < low.length; ) {
+    for (let i = 0; i < low.length;) {
         svg += `<div id='name${i}'> ${low[1]}`
         // console.log(svg);
-       i++
+        i++
     }
     var lak = document.getElementsByClassName('.name').innerHTML = svg;
 }
-
-$('.str_call').on('click', function (grt) {
-    // document.getElementsByClassName('name').appendChild(grt);
-    // $('.name').append(`#name${grt}`)
-    loop(low)
- $('.name').html(low[0])
-
-    // console.log(`name${grt[0]}`);
-    // console.log(grt);
-})
-
-// $('.str_call').on('click', function () {
-
-//     var a=  $("div").filter(".name").text()
-//     for (let z = 0; z < low.length; z++) {
-//         var a=  $("div").filter(".name").text(low[z])
-//         console.log();
-//     }
-
-
-//      console.log(a);
-// })
+var amt = 200;
 $('#sim_airtel').click(function () {
 
     var e = $('#maindiv').text()
@@ -196,8 +175,8 @@ $('#sim_airtel').click(function () {
                     'width': '250px',
                     'backgroundColor': 'rgb(34,34,34)',
                 })
-                $('#net_modal').append('<div class= "recharge">Dear customer, your recharge is successful. Your new account balance is N200. Dial *121# for your balance</div> <button class="btn d_click text-primary">ok</button>');
-
+                $('#net_modal').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
+                $('#reg').text(`Dear customer, your recharge is successful. Your new account balance is N${amt}. Dial *121# for your balance`)
                 // console.log('card');
                 $('.d_click').on('click', function (params) {
                     console.log('del');
@@ -328,4 +307,97 @@ $('.str_call').on('click', function () {
     // // $('#net-modal').hide();
     // // $('#disp_num').text(b)
     // }, 500);
+})
+var song = document.getElementById('coco')
+function print(txt) {
+    document.getElementById("disp_sec").innerHTML = txt;
+}
+// var long = document.getElementById('dis')
+$('#net_modal').click(function () {
+    setTimeout(() => {
+        var aa = document.getElementById('ans_call').style.display
+        if (aa == 'block') {
+            console.log('ye');
+            setTimeout(() => {
+                song.play()
+                setTimeout(() => {
+                    song.pause()
+                    song.src = ' '
+                    setTimeout(() => {
+                        song.src = 'audio/omo.mp3'
+                        song.play()
+                        startTime = Date.now();
+                        timerInterval = setInterval(function printTime() {
+                            elapsedTime = Date.now() - startTime;
+                            print(timeToString(elapsedTime));
+                            function timeToString(time) {
+                                let diffInHrs = time / 3600000;
+                                let hh = Math.floor(diffInHrs);
+
+                                let diffInMin = (diffInHrs - hh) * 60;
+                                let mm = Math.floor(diffInMin);
+
+                                let diffInSec = (diffInMin - mm) * 60;
+                                let ss = Math.floor(diffInSec);
+
+                                let diffInMs = (diffInSec - ss) * 100;
+                                let ms = Math.floor(diffInMs);
+
+                                let formattedMM = mm.toString().padStart(2, "0");
+                                let formattedSS = ss.toString().padStart(2, "0");
+                                // let formattedMS = ms.toString().padStart(2, "0");
+                                return `${formattedMM}:${formattedSS} `;
+                            }
+                        }, 1000)
+                    }, 10);
+
+
+                }, 10000);
+            }, 500);
+
+        } else {
+            console.log('nah');
+        }
+    }, 1000);
+})
+$('#end_call').click(function () {
+    var a = $('#disp_sec').text()
+
+
+    if (a != '') {
+        console.log('red');
+        song.pause()
+        song.src = ' '
+        clearInterval(timerInterval);
+        elapsedTime = 0;
+        console.log(a);
+        e = a.slice(a.length - 3, a.length - 1)
+        var c = e * 1.5
+        var b = amt - c
+        // console.log(c);
+        // console.log(e);
+        // console.log(amt);
+        setTimeout(() => {
+            $('#realcon').show()
+            $('#main').hide()
+            $('#ans_call').hide();
+            $('#num_dial').hide();
+            $('#network').show();
+            $('#net_modal').html(' ')
+            $('#network').css({
+                'padding': '180px 45px',
+
+            })
+            $('#net_modal').css({
+                'padding': '10px',
+                'height': '120px',
+                'width': '250px',
+                'backgroundColor': 'rgb(34,34,34)',
+            })
+            $('#net_modal').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
+            $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${b}. Dial *121# for your balance`)
+        }, 100);
+    } else {
+        console.log('ll');
+    }
 })
