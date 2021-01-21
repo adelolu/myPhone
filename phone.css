@@ -216,7 +216,7 @@
     z-index: 5;
     margin-left: 20px;
     width: 300px;
-    background-color:ivory;
+    background-color:rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(87, 85, 85, 0.425);
 }
@@ -225,7 +225,7 @@
     top: 410px;
     z-index: 5;
     /* background-color: green; */
-    background-color: ivory;
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 0 3px rgb(165, 157, 157);
     height: 50px;
     width: inherit;
@@ -346,7 +346,7 @@
     box-shadow: 5px 5px 20px rgb(148, 143, 143);
     background-color: rgba(148, 143, 143,0.3)
 } */
-#network{
+#network, #network2, #network3{
     z-index: 6  ;
     position: absolute;
     top: 77px;
@@ -357,7 +357,7 @@
     box-sizing: border-box;
     display: none;
 }
-#net_modal{
+#net_modal, #net_modal2, #net_modal3 {
     width: 200px;
     height: 100px;
     border-radius: 5px;
@@ -527,9 +527,16 @@ margin-left: 180px;
     justify-content: space-between;
 }
 .str_call{
-    background-color: darkgreen;
+    /* background-color: darkgreen; */
     height: inherit;
     width: 15%;
+    padding: 20px;
+}
+.tele2{
+    color: white;
+    font-size: 20px;
+    margin-left: 12px;
+    margin-top: 30px;
 }
 .face_con{
     /* background-color: peru; */

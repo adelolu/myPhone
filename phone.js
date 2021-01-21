@@ -17,6 +17,9 @@ $('.contact').on('click', function () {
     $('#realcon').show()
     $('#network').hide();
     $('#ans_call').hide();
+    $('#network2').hide();
+    $('#network3').hide();
+
 
 })
 
@@ -26,7 +29,8 @@ $('.home2').on('click', function () {
     $('#main').show();
     $('#network').hide();
     $('#ans_call').hide();
-
+    $('#network3').hide();
+    $('#network2').hide();
 })
 
 $('#_pad').click(function () {
@@ -35,6 +39,8 @@ $('#_pad').click(function () {
     $('#main').hide()
     $('#num_dial').show();
     $('#ans_call').hide();
+    $('#network2').hide();
+    $('#network3').hide();
     $('#network').hide();
 
 })
@@ -72,15 +78,12 @@ $('#del_icon').click(function () {
         $('#del_icon').css({
             'color': 'rgba(148, 143, 143,0.3)',
         })
-
     }
 })
 $(function (params) {
     var d = $('#maindiv').text();
-    // console.log('hii');
 
     if (d == '') {
-        //  console.log('hii');
         $('#del_icon').css({
             'color': 'rgba(148, 143, 143,0.3)',
         })
@@ -89,17 +92,22 @@ $(function (params) {
 
 })
 $('#green_call').click(function green() {
+    var a = document.getElementById('maindiv').innerText
     $('#realcon').show()
     $('#main').hide()
     $('#num_dial').hide();
     $('#ans_call').hide();
     $('#network').show();
+    // $('#net_modal').show();
+    $('#network2').hide();
+    $('#network3').hide();
     $('#simglo').html(' ')
     $('#sim_airtel').html(' ')
     $('#c_sim').html(' ')
     $('#simglo').append('<div class="sim" >glo ng</div>');
     $('#sim_airtel').append('<div class="sim">Airtel</div>');
     $('#c_sim').append('Choose SIM for this call');
+   
 
 })
 document.getElementById('network').addEventListener('click', function () {
@@ -108,31 +116,81 @@ document.getElementById('network').addEventListener('click', function () {
     $('#num_dial').hide();
     $('#ans_call').hide();
     $('#network').hide();
+    $('#network2').hide();
+    $('#network3').hide();
+
 
 }, true)
-document.getElementById('net_modal').addEventListener('click', function () {
+// document.getElementById('net_modal').addEventListener('click', function () {
+//     $('#realcon').show()
+//     $('#main').hide()
+//     $('#num_dial').hide();
+//     $('#ans_call').hide();
+//     $('#network').show();
+//     $('#network2').hide();
+//     $('#network3').hide();
+
+// }, false)
+document.getElementById('network3').addEventListener('click', function () {
     $('#realcon').show()
     $('#main').hide()
     $('#num_dial').hide();
     $('#ans_call').hide();
-    $('#network').show();
-}, false)
+    $('#network').hide();
+    $('#network2').hide();
+    $('#network3').hide();
 
-var info = []
-var low = ['temi', 'tobi', 'tolu', 'emma', 'victoria', 'tomi', 'mum', 'victor', 'pelumi', 'kenn', 'tutu', 'ola', 'dipo']
-function loop(low) {
-    svg = ''
-    for (let i = 0; i < low.length;) {
-        svg += `<div id='name${i}'> ${low[1]}`
-        // console.log(svg);
-        i++
-    }
-    var lak = document.getElementsByClassName('.name').innerHTML = svg;
-}
-var amt = 200;
+
+}, true)
+// document.getElementById('net_modal3').addEventListener('click', function () {
+//     $('#realcon').show()
+//     $('#main').hide()
+//     $('#num_dial').hide();
+//     $('#ans_call').hide();
+//     $('#network').show();
+//     $('#network2').hide();
+//     $('#network3').hide();
+
+// }, false)
+
+document.getElementById('network2').addEventListener('click', function () {
+    $('#realcon').show()
+    $('#main').hide()
+    $('#num_dial').hide();
+    $('#ans_call').hide();
+    $('#network').hide();
+    $('#network2').hide();
+    $('#network3').hide();
+
+
+}, true)
+// document.getElementById('net_modal2').addEventListener('click', function () {
+//     $('#realcon').show()
+//     $('#main').hide()
+//     $('#num_dial').hide();
+//     $('#ans_call').hide();
+//     $('#network').hide();
+//     $('#network2').show();
+//     $('#network3').hide();
+
+// })
+
+// var info = []
+// var low = ['temi', 'tobi', 'tolu', 'emma', 'victoria', 'tomi', 'mum', 'victor', 'pelumi', 'kenn', 'tutu', 'ola', 'dipo']
+// function loop(low) {
+//     svg = ''
+//     for (let i = 0; i < low.length;) {
+//         svg += `<div id='name${i}'> ${low[1]}`
+//         // console.log(svg);
+//         i++
+//     }
+//     var lak = document.getElementsByClassName('.name').innerHTML = svg;
+// }
+
 $('#sim_airtel').click(function () {
-
-    var e = $('#maindiv').text()
+    // console.log('lala');
+    // var e = $('#maindiv').text()
+    var e = document.getElementById('maindiv').innerHTML
     var f = e.substr(1, 3)
     var g = e.charAt(0)
     var j = e.charAt(e.length - 1)
@@ -144,38 +202,44 @@ $('#sim_airtel').click(function () {
         var h = e.substr(5, 12)
         var i = h.length;
         if (i == 12 && j == '#') {
-            console.log('yhyh');
+            // console.log('yhyh');
             $('#realcon').show()
             $('#ans_call').hide();
             $('#main').hide()
+            $('#network2').hide();
+            $('#network').hide();
             $('#num_dial').hide();
-            $('#network').show();
-            $('#net_modal').html(' ')
-            $('#net_modal').css({
+            $('#network3').show();
+            $('#net_modal3').show();
+            $('#net_modal').hide();
+            $('#net_modal3').html(' ')
+            $('#net_modal3').css({
                 'padding': '12px',
                 'height': '60px',
+                'z-index': '3',
                 'backgroundColor': 'rgb(34,34,34)',
             })
-            $('#net_modal').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" >USSD code running...</div></div> ');
+            $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" >USSD code running...</div></div> ');
 
             setTimeout(() => {
                 $('#realcon').show()
                 $('#main').hide()
                 $('#ans_call').hide();
                 $('#num_dial').hide();
-                $('#network').show();
-                $('#net_modal').html(' ')
-                $('#network').css({
+                $('#network').hide();
+                $('#network3').show();
+                $('#net_modal3').html(' ')
+                $('#network3').css({
                     'padding': '180px 45px',
 
                 })
-                $('#net_modal').css({
+                $('#net_modal3').css({
                     'padding': '10px',
                     'height': '120px',
                     'width': '250px',
                     'backgroundColor': 'rgb(34,34,34)',
                 })
-                $('#net_modal').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
+                $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
                 $('#reg').text(`Dear customer, your recharge is successful. Your new account balance is N${amt}. Dial *121# for your balance`)
                 // console.log('card');
                 $('.d_click').on('click', function (params) {
@@ -183,37 +247,44 @@ $('#sim_airtel').click(function () {
                     $('#realcon').show()
                     $('#main').hide()
                     $('#ans_call').hide();
-                    $('#num_dial').hide();
                     $('#network').hide();
+                    $('#num_dial').hide();
+                    $('#network3').hide();
                 })
             }, 3000);
         } else {
+            console.log('yaya');
             $('#realcon').show()
             $('#ans_call').hide();
             $('#main').hide()
             $('#num_dial').hide();
-            $('#network').show();
-            $('#net_modal').html(' ')
-            $('#net_modal').css({
+            $('#network').hide();
+            $('#network3').show();
+            $('#network2').hide();
+            // $('#net_modal3').html(' ')
+            $('#net_modal3').css({
                 'padding': '12px',
                 'height': '60px',
                 // 'height': '60px',
                 'backgroundColor': 'rgb(34,34,34)',
             })
-            $('#net_modal').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" >USSD code running...</div></div> ');
+            $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" ></div></div> ');
+            $("#ussd").html('USSD code running...')
             setTimeout(() => {
                 $('#realcon').show()
                 $('#main').hide()
                 $('#ans_call').hide();
                 $('#num_dial').hide();
-                $('#network').show();
-                $('#net_modal').html(' ')
-                $('#net_modal').css({
+                $('#network').hide();
+                $('#network2').hide();
+                // $('#network3').show();
+                $('#net_modal3').html(' ')
+                $('#net_modal3').css({
                     'padding': '12px',
                     'height': '80px',
                     'backgroundColor': 'rgb(34,34,34)',
                 })
-                $('#net_modal').append('<div id="ussd" >Invalid activation code... </div> <button id="d_click" class="btn d_click text-primary">ok</button>');
+                $('#net_modal3').append('<div id="ussd" >Invalid activation code... </div> <button id="d_click" class="btn d_click text-primary">ok</button>');
                 $('#d_click').css({
                     'margin-left': '130px',
                     'margin-top': '-15px',
@@ -224,50 +295,41 @@ $('#sim_airtel').click(function () {
                     $('#realcon').show()
                     $('#main').hide()
                     $('#ans_call').hide();
-                    $('#num_dial').hide();
                     $('#network').hide();
+                    $('#num_dial').hide();
+                    $('#network2').hide();
+                    $('#network3').hide();
                 })
 
             }, 3500);
 
         }
-
     } else {
         if (e == '') {
-
             setTimeout(() => {
                 var a = Math.floor(Math.random() * 1000000000 + 1)
                 var b = '080' + a
-                // loop(info)
-                // var rname = ['temi', 'jj', 'tomi', 'tolu', 'pelumi', 'vic', 'mum', 'tutu']
-                // function loop(rname[i]) {/
-                // var love =  ''
-                //     for (let i = 0; i < rname.length; i++) {
-                //         console.log([rname[i]]);
-                //         love =  `${rname[i]} <br>`
-                //     }
-                //     console.log(love);
-                //     console.log(rname[1]);
+
+                // var basic = {
+                //     // name:  love,
+                //     sim: 'airtel',
+                //     number: b,
                 // }
-                var basic = {
-                    // name:  love,
-                    sim: 'airtel',
-                    number: b,
-                }
 
                 // corname[i])); 
-                var cont = info.push(basic)
+                // var cont = info.push(basic)
                 // console.log(info.name);
                 $('#realcon').hide()
                 $('#main').hide()
                 $('#ans_call').show();
                 $('#num_dial').hide();
                 $('#network').hide();
+                $('#network2').hide();
+                $('#network3').hide();
                 // $('#net-modal').hide();
-                $('#disp_num').html(low[0])
+                $('#disp_num').html(b)
             }, 500);
-        }
-        else {
+        } else {
             setTimeout(() => {
                 //    console.log(e);
                 $('#realcon').hide()
@@ -275,11 +337,15 @@ $('#sim_airtel').click(function () {
                 $('#ans_call').show();
                 $('#num_dial').hide();
                 $('#network').hide();
+                $('#network2').hide();
+                $('#network3').hide();
                 // $('#net-modal').hide();
                 $('#disp_num').text(e)
+                console.log('hhh');
             }, 500);
         }
     }
+
 })
 
 $('.str_call').on('click', function () {
@@ -290,6 +356,8 @@ $('.str_call').on('click', function () {
         $('#num_dial').hide();
         $('#ans_call').hide();
         $('#network').show();
+        $('#network2').hide();
+        $('#network3').hide();
         $('#simglo').html(' ')
         $('#sim_airtel').html(' ')
         $('#c_sim').html(' ')
@@ -297,23 +365,14 @@ $('.str_call').on('click', function () {
         $('#sim_airtel').append('<div class="sim">Airtel</div>');
         $('#c_sim').append('Choose SIM for this call');
     }, 500);
-    // setTimeout(() => {
-    // //    console.log(e);
-    // $('#realcon').show()
-    // $('#main').hide()
-    // $('#ans_call').hide();
-    // $('#num_dial').hide();
-    // $('#network').show();
-    // // $('#net-modal').hide();
-    // // $('#disp_num').text(b)
-    // }, 500);
 })
 var song = document.getElementById('coco')
 function print(txt) {
     document.getElementById("disp_sec").innerHTML = txt;
 }
-// var long = document.getElementById('dis')
-$('#net_modal').click(function () {
+document.getElementById('net_modal').addEventListener('click', function () {
+    // $('#net_modal').click(function () {
+    $("#disp_sec").html(' ')
     setTimeout(() => {
         var aa = document.getElementById('ans_call').style.display
         if (aa == 'block') {
@@ -360,6 +419,9 @@ $('#net_modal').click(function () {
         }
     }, 1000);
 })
+function name(params) {
+    var amt = 200;
+}
 $('#end_call').click(function () {
     var a = $('#disp_sec').text()
 
@@ -382,19 +444,23 @@ $('#end_call').click(function () {
             $('#main').hide()
             $('#ans_call').hide();
             $('#num_dial').hide();
-            $('#network').show();
-            $('#net_modal').html(' ')
-            $('#network').css({
+            $('#network').hide();
+            $('#network2').show();
+            $('#network3').hide();
+            $('#net_modal2').html(' ')
+            // $('#net_modal').hide()
+            $('#network2').css({
                 'padding': '180px 45px',
 
             })
-            $('#net_modal').css({
+            $('#net_modal2').css({
                 'padding': '10px',
                 'height': '120px',
                 'width': '250px',
+                'z-index': '3',
                 'backgroundColor': 'rgb(34,34,34)',
             })
-            $('#net_modal').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
+            $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
             $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${b}. Dial *121# for your balance`)
         }, 100);
     } else {
