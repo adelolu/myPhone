@@ -107,7 +107,7 @@ $('#green_call').click(function green() {
     $('#simglo').append('<div class="sim" >glo ng</div>');
     $('#sim_airtel').append('<div class="sim">Airtel</div>');
     $('#c_sim').append('Choose SIM for this call');
-   
+
 
 })
 document.getElementById('network').addEventListener('click', function () {
@@ -379,6 +379,8 @@ document.getElementById('net_modal').addEventListener('click', function () {
             console.log('ye');
             setTimeout(() => {
                 song.play()
+                print('calling...')
+
                 setTimeout(() => {
                     song.pause()
                     song.src = ' '
@@ -419,51 +421,65 @@ document.getElementById('net_modal').addEventListener('click', function () {
         }
     }, 1000);
 })
-function name(params) {
-    var amt = 200;
-}
+
+amt = 200
 $('#end_call').click(function () {
     var a = $('#disp_sec').text()
-
+    localStorage.setItem('money', JSON.stringify(amt))
+    var get_amt = JSON.parse(localStorage.getItem('money'))
 
     if (a != '') {
-        console.log('red');
+
+
         song.pause()
         song.src = ' '
         clearInterval(timerInterval);
         elapsedTime = 0;
         console.log(a);
         e = a.slice(a.length - 3, a.length - 1)
+        console.log(get_amt);
         var c = e * 1.5
-        var b = amt - c
-        // console.log(c);
-        // console.log(e);
-        // console.log(amt);
-        setTimeout(() => {
-            $('#realcon').show()
-            $('#main').hide()
-            $('#ans_call').hide();
-            $('#num_dial').hide();
-            $('#network').hide();
-            $('#network2').show();
-            $('#network3').hide();
-            $('#net_modal2').html(' ')
-            // $('#net_modal').hide()
-            $('#network2').css({
-                'padding': '180px 45px',
+        amt = get_amt - c
 
-            })
-            $('#net_modal2').css({
-                'padding': '10px',
-                'height': '120px',
-                'width': '250px',
-                'z-index': '3',
-                'backgroundColor': 'rgb(34,34,34)',
-            })
-            $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
-            $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${b}. Dial *121# for your balance`)
+        setTimeout(() => {
+
+            localStorage.setItem('money', JSON.stringify(amt))
+            var get_amt = JSON.parse(localStorage.getItem('money'))
+            console.log(get_amt);
+
+            // if (get_amt >= '0') {
+
+                $('#realcon').show()
+                $('#main').hide()
+                $('#ans_call').hide();
+                $('#num_dial').hide();
+                $('#network').hide();
+                $('#network2').show();
+                $('#network3').hide();
+                $('#net_modal2').html(' ')
+                // $('#net_modal').hide()
+                $('#network2').css({
+                    'padding': '180px 45px',
+
+                })
+                $('#net_modal2').css({
+                    'padding': '10px',
+                    'height': '120px',
+                    'width': '250px',
+                    'z-index': '3',
+                    'backgroundColor': 'rgb(34,34,34)',
+                })
+
+                $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
+                $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_amt}. Dial *121# for your balance`)
+
+                amt = get_amt
+            // } else {
+            //     console.log('nothing');
+            // }
         }, 100);
     } else {
         console.log('ll');
     }
 })
+// lal()
