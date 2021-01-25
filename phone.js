@@ -8,6 +8,9 @@ function date() {
     document.getElementById('date').innerHTML = `${days[day]} ${mdate} ${months[month]}`
 }
 date()
+var get_amt = JSON.parse(localStorage.getItem('money'))
+amt = get_amt
+console.log(get_amt);
 function call() {
     var a = document.getElementById('main').innerHTML = ' '
     document.getElementById('main').style.backgroundColor = 'white'
@@ -98,7 +101,7 @@ $('#green_call').click(function green() {
     $('#num_dial').hide();
     $('#ans_call').hide();
     $('#network').show();
-    // $('#net_modal').show();
+    $('#net_modal').show(); 
     $('#network2').hide();
     $('#network3').hide();
     $('#simglo').html(' ')
@@ -186,7 +189,7 @@ document.getElementById('network2').addEventListener('click', function () {
 //     }
 //     var lak = document.getElementsByClassName('.name').innerHTML = svg;
 // }
-
+// amt = 0
 $('#sim_airtel').click(function () {
     // console.log('lala');
     // var e = $('#maindiv').text()
@@ -203,15 +206,24 @@ $('#sim_airtel').click(function () {
         var i = h.length;
         if (i == 12 && j == '#') {
             // console.log('yhyh');
+            // $('#realcon').show()
+            // $('#ans_call').hide();
+            // $('#main').hide()
+            // $('#network2').hide();
+            // $('#network').hide();
+            // $('#num_dial').hide();
+            // $('#network3').show();
+            // // $('#net_modal3').show();
+            // // $('#net_modal').hide();
+            // $('#net_modal3').html(' ')
+
             $('#realcon').show()
             $('#ans_call').hide();
             $('#main').hide()
-            $('#network2').hide();
-            $('#network').hide();
             $('#num_dial').hide();
+            $('#network').hide();
             $('#network3').show();
-            $('#net_modal3').show();
-            $('#net_modal').hide();
+            $('#network2').hide();
             $('#net_modal3').html(' ')
             $('#net_modal3').css({
                 'padding': '12px',
@@ -220,7 +232,7 @@ $('#sim_airtel').click(function () {
                 'backgroundColor': 'rgb(34,34,34)',
             })
             $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" >USSD code running...</div></div> ');
-
+            // $('#net_modal3').text(' ')
             setTimeout(() => {
                 $('#realcon').show()
                 $('#main').hide()
@@ -228,6 +240,7 @@ $('#sim_airtel').click(function () {
                 $('#num_dial').hide();
                 $('#network').hide();
                 $('#network3').show();
+                // $('#reg').text(' ')
                 $('#net_modal3').html(' ')
                 $('#network3').css({
                     'padding': '180px 45px',
@@ -239,8 +252,12 @@ $('#sim_airtel').click(function () {
                     'width': '250px',
                     'backgroundColor': 'rgb(34,34,34)',
                 })
+                var get_amt = JSON.parse(localStorage.getItem('money'))
+                amt = 100 + get_amt
+                localStorage.setItem('money', JSON.stringify(amt))
+                var get_amt = JSON.parse(localStorage.getItem('money'))
                 $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
-                $('#reg').text(`Dear customer, your recharge is successful. Your new account balance is N${amt}. Dial *121# for your balance`)
+                $('#reg').text(`Dear customer, your recharge is successful. Your new account balance is N${get_amt}. Dial *121# for your balance`)
                 // console.log('card');
                 $('.d_click').on('click', function (params) {
                     console.log('del');
@@ -248,12 +265,13 @@ $('#sim_airtel').click(function () {
                     $('#main').hide()
                     $('#ans_call').hide();
                     $('#network').hide();
+                    $('#network2').hide();
                     $('#num_dial').hide();
                     $('#network3').hide();
                 })
             }, 3000);
         } else {
-            console.log('yaya');
+            // console.log('yaya');
             $('#realcon').show()
             $('#ans_call').hide();
             $('#main').hide()
@@ -261,9 +279,9 @@ $('#sim_airtel').click(function () {
             $('#network').hide();
             $('#network3').show();
             $('#network2').hide();
-            // $('#net_modal3').html(' ')
+            $('#net_modal3').html(' ')
             $('#net_modal3').css({
-                'padding': '12px',
+                'padding': '10px',
                 'height': '60px',
                 // 'height': '60px',
                 'backgroundColor': 'rgb(34,34,34)',
@@ -373,56 +391,148 @@ function print(txt) {
 document.getElementById('net_modal').addEventListener('click', function () {
     // $('#net_modal').click(function () {
     $("#disp_sec").html(' ')
-    setTimeout(() => {
-        var aa = document.getElementById('ans_call').style.display
-        if (aa == 'block') {
-            console.log('ye');
-            setTimeout(() => {
-                song.play()
-                print('calling...')
-
+    var get_amt = JSON.parse(localStorage.getItem('money'))
+    // console.log(get_amt);
+    if (get_amt == 0) {
+        song.src = 'audio/recharge.mp3'
+        song.play()
+        setTimeout(() => {
+            song.pause()
+            // song.src = ' '
+            song.src = 'audio/temi.mp3'
+            $('#realcon').show()
+            $('#num_dial').hide()
+            $('#main').hide();
+            $('#network').hide();
+            $('#ans_call').hide();
+            $('#network3').hide();
+            $('#network2').hide();
+            localStorage.setItem('money', JSON.stringify(amt))
+        }, 9000);
+    } else {
+        sttop = setTimeout(() => {
+            var aa = document.getElementById('ans_call').style.display
+            if (aa == 'block') {
+                console.log('ye');
                 setTimeout(() => {
-                    song.pause()
-                    song.src = ' '
+                    song.play()
+                    print('calling...')
+
                     setTimeout(() => {
-                        song.src = 'audio/omo.mp3'
-                        song.play()
-                        startTime = Date.now();
-                        timerInterval = setInterval(function printTime() {
-                            elapsedTime = Date.now() - startTime;
-                            print(timeToString(elapsedTime));
-                            function timeToString(time) {
-                                let diffInHrs = time / 3600000;
-                                let hh = Math.floor(diffInHrs);
+                        song.pause()
+                        song.src = ' '
+                        setTimeout(() => {
+                            song.src = 'audio/omo.mp3'
+                            song.play()
+                            startTime = Date.now();
+                            timerInterval = setInterval(function printTime() {
+                                elapsedTime = Date.now() - startTime;
+                                print(timeToString(elapsedTime));
+                                function timeToString(time) {
+                                    let diffInHrs = time / 3600000;
+                                    let hh = Math.floor(diffInHrs);
 
-                                let diffInMin = (diffInHrs - hh) * 60;
-                                let mm = Math.floor(diffInMin);
+                                    let diffInMin = (diffInHrs - hh) * 60;
+                                    let mm = Math.floor(diffInMin);
 
-                                let diffInSec = (diffInMin - mm) * 60;
-                                let ss = Math.floor(diffInSec);
+                                    let diffInSec = (diffInMin - mm) * 60;
+                                    let ss = Math.floor(diffInSec);
 
-                                let diffInMs = (diffInSec - ss) * 100;
-                                let ms = Math.floor(diffInMs);
+                                    let diffInMs = (diffInSec - ss) * 100;
+                                    let ms = Math.floor(diffInMs);
 
-                                let formattedMM = mm.toString().padStart(2, "0");
-                                let formattedSS = ss.toString().padStart(2, "0");
-                                // let formattedMS = ms.toString().padStart(2, "0");
-                                return `${formattedMM}:${formattedSS} `;
-                            }
-                        }, 1000)
-                    }, 10);
+                                    let formattedMM = mm.toString().padStart(2, "0");
+                                    let formattedSS = ss.toString().padStart(2, "0");
+                                    // let formattedMS = ms.toString().padStart(2, "0");
+                                    return `${formattedMM}:${formattedSS} `;
+                                }
+                            }, 1000)
+                        }, 10);
 
 
-                }, 10000);
-            }, 500);
+                    }, 10000);
+                }, 500);
 
-        } else {
-            console.log('nah');
-        }
-    }, 1000);
+            } else {
+                console.log('nah');
+            }
+
+
+
+            if (aa == 'block') {
+                startTime = Date.now();
+                timer = setInterval(function printTime() {
+                    elapsedTime = Date.now() - startTime;
+                    // print(timeToString(elapsedTime));
+                    // function timeToString(time) {
+                    let diffInHrs = elapsedTime / 3600000;
+                    let hh = Math.floor(diffInHrs);
+
+                    let diffInMin = (diffInHrs - hh) * 60;
+                    let mm = Math.floor(diffInMin);
+
+                    let diffInSec = (diffInMin - mm) * 60;
+                    let ss = Math.floor(diffInSec);
+
+                    let diffInMs = (diffInSec - ss) * 100;
+                    let ms = Math.floor(diffInMs);
+
+                    z = mm * 60 + ss
+                    y = z * 5
+                    am = amt - y
+                    localStorage.setItem('money', JSON.stringify(am))
+                    var get_amt = JSON.parse(localStorage.getItem('money'))
+
+                    // t = typeof (x)
+                    console.log(get_amt);
+                    // console.log(amt);
+                    if (get_amt <= 0) {
+                        console.log(get_amt);
+                        // localStorage.setItem('money', JSON.stringify(amt))
+                        // var get_amt = JSON.parse(localStorage.getItem('money'))
+                        song.pause()
+                        song.src = ' '
+                        setTimeout(() => {
+
+                            song.src = 'audio/recharge.mp3'
+                            song.play()
+                            console.log('ur credit has finished');
+                            clearInterval(timer)
+                            clearInterval(timerInterval)
+                            setTimeout(() => {
+                                clearTimeout(sttop)
+                                song.pause()
+                                // song.src = ' '
+                                song.src = 'audio/temi.mp3'
+                                $('#realcon').show()
+                                $('#num_dial').hide()
+                                $('#main').hide();
+                                $('#network').hide();
+                                $('#ans_call').hide();
+                                $('#network3').hide();
+                                $('#network2').hide();
+                            }, 9000);
+                        }, 100);
+
+                    } else {
+                        console.log('nahhh');
+                    }
+
+                    // let formattedMM = mm.toString().padStart(2, "0");
+                    // let formattedSS = ss.toString().padStart(2, "0");
+                    // let formattedMS = ms.toString().padStart(2, "0");
+                    // return `${formattedMM}:${formattedSS} `;
+                    // }
+                }, 1000)
+            } else {
+
+            }
+        }, 1000);
+    }
 })
 
-amt = 200
+
+
 $('#end_call').click(function () {
     var a = $('#disp_sec').text()
     localStorage.setItem('money', JSON.stringify(amt))
@@ -432,13 +542,22 @@ $('#end_call').click(function () {
 
 
         song.pause()
-        song.src = ' '
+        song.src = 'audio/temi.mp3'
         clearInterval(timerInterval);
+        clearInterval(timer)
         elapsedTime = 0;
         console.log(a);
         e = a.slice(a.length - 3, a.length - 1)
+        m = a.slice(1, 2)
+        console.log(m);
+        console.log(e);
         console.log(get_amt);
-        var c = e * 1.5
+        n = parseInt(m)
+        o = parseInt(e)
+        p = n * 60 + o
+        console.log(p);
+        // o = 
+        var c = p * 0.5
         amt = get_amt - c
 
         setTimeout(() => {
@@ -449,31 +568,31 @@ $('#end_call').click(function () {
 
             // if (get_amt >= '0') {
 
-                $('#realcon').show()
-                $('#main').hide()
-                $('#ans_call').hide();
-                $('#num_dial').hide();
-                $('#network').hide();
-                $('#network2').show();
-                $('#network3').hide();
-                $('#net_modal2').html(' ')
-                // $('#net_modal').hide()
-                $('#network2').css({
-                    'padding': '180px 45px',
+            $('#realcon').show()
+            $('#main').hide()
+            $('#ans_call').hide();
+            $('#num_dial').hide();
+            $('#network').hide();
+            $('#network2').show();
+            $('#network3').hide();
+            $('#net_modal2').html(' ')
+            // $('#net_modal').hide()
+            $('#network2').css({
+                'padding': '180px 45px',
 
-                })
-                $('#net_modal2').css({
-                    'padding': '10px',
-                    'height': '120px',
-                    'width': '250px',
-                    'z-index': '3',
-                    'backgroundColor': 'rgb(34,34,34)',
-                })
+            })
+            $('#net_modal2').css({
+                'padding': '10px',
+                'height': '120px',
+                'width': '250px',
+                'z-index': '3',
+                'backgroundColor': 'rgb(34,34,34)',
+            })
 
-                $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
-                $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_amt}. Dial *121# for your balance`)
+            $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
+            $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_amt}. Dial *121# for your balance`)
 
-                amt = get_amt
+            amt = get_amt
             // } else {
             //     console.log('nothing');
             // }
