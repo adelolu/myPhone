@@ -101,7 +101,7 @@ $('#green_call').click(function green() {
     $('#num_dial').hide();
     $('#ans_call').hide();
     $('#network').show();
-    $('#net_modal').show(); 
+    $('#net_modal').show();
     $('#network2').hide();
     $('#network3').hide();
     $('#simglo').html(' ')
@@ -124,16 +124,7 @@ document.getElementById('network').addEventListener('click', function () {
 
 
 }, true)
-// document.getElementById('net_modal').addEventListener('click', function () {
-//     $('#realcon').show()
-//     $('#main').hide()
-//     $('#num_dial').hide();
-//     $('#ans_call').hide();
-//     $('#network').show();
-//     $('#network2').hide();
-//     $('#network3').hide();
 
-// }, false)
 document.getElementById('network3').addEventListener('click', function () {
     $('#realcon').show()
     $('#main').hide()
@@ -145,16 +136,6 @@ document.getElementById('network3').addEventListener('click', function () {
 
 
 }, true)
-// document.getElementById('net_modal3').addEventListener('click', function () {
-//     $('#realcon').show()
-//     $('#main').hide()
-//     $('#num_dial').hide();
-//     $('#ans_call').hide();
-//     $('#network').show();
-//     $('#network2').hide();
-//     $('#network3').hide();
-
-// }, false)
 
 document.getElementById('network2').addEventListener('click', function () {
     $('#realcon').show()
@@ -167,29 +148,22 @@ document.getElementById('network2').addEventListener('click', function () {
 
 
 }, true)
-// document.getElementById('net_modal2').addEventListener('click', function () {
-//     $('#realcon').show()
-//     $('#main').hide()
-//     $('#num_dial').hide();
-//     $('#ans_call').hide();
-//     $('#network').hide();
-//     $('#network2').show();
-//     $('#network3').hide();
 
-// })
+function calll() {
+    var r = document.getElementById('ppl').innerText
+    // var r = $("#ppl").text()
+    $("#disp_num").text(r)
+    // var r = $(".name").text()
 
-// var info = []
-// var low = ['temi', 'tobi', 'tolu', 'emma', 'victoria', 'tomi', 'mum', 'victor', 'pelumi', 'kenn', 'tutu', 'ola', 'dipo']
-// function loop(low) {
-//     svg = ''
-//     for (let i = 0; i < low.length;) {
-//         svg += `<div id='name${i}'> ${low[1]}`
-//         // console.log(svg);
-//         i++
-//     }
-//     var lak = document.getElementsByClassName('.name').innerHTML = svg;
-// }
-// amt = 0
+    // var s = $(this)
+    // console.log(s);
+    // $("#disp_num").text(s)
+    // var w = $(".con_list").children('div.con_info').text()
+    // var v = w.innerText
+    // console.log(v);
+    // console.log(w);
+}
+
 $('#sim_airtel').click(function () {
     // console.log('lala');
     // var e = $('#maindiv').text()
@@ -323,7 +297,22 @@ $('#sim_airtel').click(function () {
 
         }
     } else {
-        if (e == '') {
+        var vall = $("#ppl").text()
+        if (vall == vall && e != ' ') {
+            $('#realcon').hide()
+            $('#main').hide()
+            $('#ans_call').show();
+            $('#num_dial').hide();
+            $('#network').hide();
+            $('#network2').hide();
+            $('#network3').hide();
+            // $('#net-modal').hide();
+            // $('#disp_num').html(b)
+            calll()
+
+        }
+        else if (e == '') {
+
             setTimeout(() => {
                 var a = Math.floor(Math.random() * 1000000000 + 1)
                 var b = '080' + a
@@ -365,6 +354,7 @@ $('#sim_airtel').click(function () {
     }
 
 })
+
 
 $('.str_call').on('click', function () {
 
@@ -413,7 +403,7 @@ document.getElementById('net_modal').addEventListener('click', function () {
         sttop = setTimeout(() => {
             var aa = document.getElementById('ans_call').style.display
             if (aa == 'block') {
-                console.log('ye');
+                // console.log('ye');
                 setTimeout(() => {
                     song.play()
                     print('calling...')
@@ -454,12 +444,28 @@ document.getElementById('net_modal').addEventListener('click', function () {
                 }, 500);
 
             } else {
-                console.log('nah');
+                // console.log('nah');
+            }
+            u = $('#disp_num').html()
+            console.log(u);
+            s = u.slice(0, 3)
+            console.log(s);
+            if (s == '070') {
+                $('#place_sim').html('glo ng')
+                $('#place_sim').css({
+                    'color': 'aqua'
+                })
+            } else if (s == '080') {
+                $('#place_sim').html('Airtel')
+                $('#place_sim').css({
+                    'color': 'orange'
+                })
             }
 
 
-
             if (aa == 'block') {
+
+                // $('#place_sim').html('hh')
                 startTime = Date.now();
                 timer = setInterval(function printTime() {
                     elapsedTime = Date.now() - startTime;
@@ -478,7 +484,7 @@ document.getElementById('net_modal').addEventListener('click', function () {
                     let ms = Math.floor(diffInMs);
 
                     z = mm * 60 + ss
-                    y = z * 5
+                    y = z * 0.5
                     am = amt - y
                     localStorage.setItem('money', JSON.stringify(am))
                     var get_amt = JSON.parse(localStorage.getItem('money'))
@@ -527,20 +533,16 @@ document.getElementById('net_modal').addEventListener('click', function () {
             } else {
 
             }
-        }, 1000);
+        }, 500);
     }
 })
-
-
 
 $('#end_call').click(function () {
     var a = $('#disp_sec').text()
     localStorage.setItem('money', JSON.stringify(amt))
     var get_amt = JSON.parse(localStorage.getItem('money'))
 
-    if (a != '') {
-
-
+    if (a != '' && a !== 'calling...') {
         song.pause()
         song.src = 'audio/temi.mp3'
         clearInterval(timerInterval);
@@ -593,12 +595,166 @@ $('#end_call').click(function () {
             $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_amt}. Dial *121# for your balance`)
 
             amt = get_amt
-            // } else {
-            //     console.log('nothing');
-            // }
+
         }, 100);
     } else {
         console.log('ll');
     }
 })
-// lal()
+
+$('#simglo').click(function () {
+
+    var e = document.getElementById('maindiv').innerHTML
+    var f = e.substr(1, 3)
+    var g = e.charAt(0)
+    var j = e.charAt(e.length - 1)
+
+    if (f == '123' && g == '*' && j == '#') {
+
+        var h = e.substr(5, 15)
+        var i = h.length;
+        console.log(i);
+        if (i == 15 && j == '#') {
+            // console.log('yhyh');
+            // $('#realcon').show()
+            // $('#ans_call').hide();
+            // $('#main').hide()
+            // $('#network2').hide();
+            // $('#network').hide();
+            // $('#num_dial').hide();
+            // $('#network3').show();
+            // // $('#net_modal3').show();
+            // // $('#net_modal').hide();
+            // $('#net_modal3').html(' ')
+
+            $('#realcon').show()
+            $('#ans_call').hide();
+            $('#main').hide()
+            $('#num_dial').hide();
+            $('#network').hide();
+            $('#network3').show();
+            $('#network2').hide();
+            $('#net_modal3').html(' ')
+            $('#net_modal3').css({
+                'padding': '12px',
+                'height': '60px',
+                'z-index': '3',
+                'backgroundColor': 'rgb(34,34,34)',
+            })
+            $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" >USSD code running...</div></div> ');
+
+            setTimeout(() => {
+                $('#realcon').show()
+                $('#main').hide()
+                $('#ans_call').hide();
+                $('#num_dial').hide();
+                $('#network').hide();
+                $('#network3').show();
+                $('#net_modal3').html(' ')
+                $('#network3').css({
+                    'padding': '180px 45px',
+
+                })
+                $('#net_modal3').css({
+                    'padding': '10px',
+                    'height': '120px',
+                    'width': '250px',
+                    'backgroundColor': 'rgb(34,34,34)',
+                })
+                var get_amt = JSON.parse(localStorage.getItem('money'))
+                amt = 100 + get_amt
+                localStorage.setItem('money', JSON.stringify(amt))
+                var get_amt = JSON.parse(localStorage.getItem('money'))
+                $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
+                $('#reg').text(`Dear customer, your recharge is successful. Your new account balance is N${get_amt}. Dial *321# for your balance`)
+                // console.log('card');
+                $('.d_click').on('click', function (params) {
+                    console.log('del');
+                    $('#realcon').show()
+                    $('#main').hide()
+                    $('#ans_call').hide();
+                    $('#network').hide();
+                    $('#network2').hide();
+                    $('#num_dial').hide();
+                    $('#network3').hide();
+                })
+            }, 3000);
+        } else {
+            $('#realcon').show()
+            $('#ans_call').hide();
+            $('#main').hide()
+            $('#num_dial').hide();
+            $('#network').hide();
+            $('#network3').show();
+            $('#network2').hide();
+            $('#net_modal3').html(' ')
+            $('#net_modal3').css({
+                'padding': '10px',
+                'height': '60px',
+                'backgroundColor': 'rgb(34,34,34)',
+            })
+            $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" ></div></div> ');
+            $("#ussd").html('USSD code running...')
+            setTimeout(() => {
+                $('#realcon').show()
+                $('#main').hide()
+                $('#ans_call').hide();
+                $('#num_dial').hide();
+                $('#network').hide();
+                $('#network2').hide();
+                // $('#network3').show();
+                $('#net_modal3').html(' ')
+                $('#net_modal3').css({
+                    'padding': '12px',
+                    'height': '80px',
+                    'backgroundColor': 'rgb(34,34,34)',
+                })
+                $('#net_modal3').append('<div id="ussd" >Invalid activation code... </div> <button id="d_click" class="btn d_click text-primary">ok</button>');
+                $('#d_click').css({
+                    'margin-left': '130px',
+                    'margin-top': '-15px',
+
+                })
+                $('.d_click').on('click', function (params) {
+                    // console.log('del');
+                    $('#realcon').show()
+                    $('#main').hide()
+                    $('#ans_call').hide();
+                    $('#network').hide();
+                    $('#num_dial').hide();
+                    $('#network2').hide();
+                    $('#network3').hide();
+                })
+
+            }, 3500);
+
+        }
+    } else {
+        if (e == '') {
+            setTimeout(() => {
+                var a = Math.floor(Math.random() * 1000000000 + 1)
+                var b = '070' + a
+                $('#realcon').hide()
+                $('#main').hide()
+                $('#ans_call').show();
+                $('#num_dial').hide();
+                $('#network').hide();
+                $('#network2').hide();
+                $('#network3').hide();
+                $('#disp_num').html(b)
+            }, 500);
+        } else {
+            setTimeout(() => {
+                $('#realcon').hide()
+                $('#main').hide()
+                $('#ans_call').show();
+                $('#num_dial').hide();
+                $('#network').hide();
+                $('#network2').hide();
+                $('#network3').hide();
+                $('#disp_num').text(e)
+            }, 500);
+        }
+    }
+
+})
