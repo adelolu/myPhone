@@ -67,19 +67,6 @@ function loop(get_arr) {
     document.getElementById('res').innerHTML = svg;
 }
 
-function kup() {
-    let aa = $("#main").text()
-    let ab = document.getElementById('num_dial').style.display
-    if (aa = '*126*' && ab == 'block') {
-        localStorage.setItem('store', JSON.stringify(arr))
-        var get_arr = JSON.parse(localStorage.getItem('store'))
-        console.log(get_arr);
-        console.log(get_arr.length);
-        console.log(get_arr[`${key}`].pin);
-        console.log(get_arr[`${key}`]);
-    }
-}
-
 
 function date() {
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -101,30 +88,33 @@ function call() {
     document.getElementById('main').style.backgroundColor = 'white'
 }
 $('.contact').on('click', function () {
-    $('#main').hide();
-    $('#realcon').show()
+    $('#main').hide(3000);
+    $('#realcon').show(2000)
+    // $('#realcon').effect('bounce')
+    // $("#realcon").fadeTo(0.5,'slow');
     $('#network').hide();
     $('#ans_call').hide();
     $('#network2').hide();
     $('#network3').hide();
+    // $("#div1").fadeIn();
 
 
 })
 
 $('.home2').on('click', function () {
-    $('#realcon').hide()
-    $('#num_dial').hide()
-    $('#main').show();
-    $('#network').hide();
-    $('#ans_call').hide();
-    $('#network3').hide();
-    $('#network2').hide();
+    $('#realcon').hide(2000)
+    $('#num_dial').hide('fade')
+    $('#main').show('slide');
+    $('#network').hide(2000);
+    $('#ans_call').hide(2000);
+    $('#network3').hide(2000);
+    $('#network2').hide(2000);
 })
 
 $('#_pad').click(function () {
-    $('#realcon').hide()
+    $('#realcon').hide(3000)
     $('#main').hide()
-    $('#num_dial').show();
+    $('#num_dial').show(2000);
     $('#ans_call').hide();
     $('#network2').hide();
     $('#network3').hide();
@@ -183,8 +173,8 @@ $('#green_call').click(function green() {
     $('#main').hide()
     $('#num_dial').hide();
     $('#ans_call').hide();
-    $('#network').show();
-    $('#net_modal').show();
+    $('#network').show('slide');
+    $('#net_modal').show(3000);
     $('#network2').hide();
     $('#network3').hide();
     $('#simglo').html(' ')
@@ -232,19 +222,6 @@ document.getElementById('network2').addEventListener('click', function () {
 
 }, true)
 
-function calll() {
-
-    // var w = $(".con_list").children('div.con_info').text()
-    // var v = w.innerText
-}
-function lala(low) {
-    console.log(low);
-    loop(get_arr)
-    console.log(get_arr);
-    // dd = get_arr[0].amount
-    dd = get_arr[`${luv}`].amount
-    console.log(dd);
-}
 
 $('#sim_airtel').click(function () {
     var e = document.getElementById('maindiv').innerHTML
@@ -252,7 +229,6 @@ $('#sim_airtel').click(function () {
     var g = e.charAt(0)
     var j = e.charAt(e.length - 1)
     var vall = $("#ppl").text()
-    // console.log(vall);
     if (f == '121' && g == '*' && j == '#') {
 
         $('#realcon').show()
@@ -260,7 +236,7 @@ $('#sim_airtel').click(function () {
         $('#main').hide()
         $('#num_dial').hide();
         $('#network').hide();
-        $('#network3').show();
+        $('#network3').show('fade');
         $('#network2').hide();
         $('#net_modal3').html(' ')
         $('#net_modal3').css({
@@ -322,7 +298,7 @@ $('#sim_airtel').click(function () {
             $('#main').hide()
             $('#num_dial').hide();
             $('#network').hide();
-            $('#network3').show();
+            $('#network3').show(2000);
             $('#network2').hide();
             $('#net_modal3').html(' ')
             $('#net_modal3').css({
@@ -339,7 +315,7 @@ $('#sim_airtel').click(function () {
                 $('#ans_call').hide();
                 $('#num_dial').hide();
                 $('#network').hide();
-                $('#network3').show();
+                $('#network3').show(3000);
                 // $('#reg').text(' ')
                 $('#net_modal3').html(' ')
                 $('#network3').css({
@@ -437,7 +413,7 @@ $('#sim_airtel').click(function () {
                 var b = '080' + a
                 $('#realcon').hide()
                 $('#main').hide()
-                $('#ans_call').show();
+                $('#ans_call').show(3000);
                 $('#num_dial').hide();
                 $('#network').hide();
                 $('#network2').hide();
@@ -449,7 +425,7 @@ $('#sim_airtel').click(function () {
             setTimeout(() => {
                 $('#realcon').hide()
                 $('#main').hide()
-                $('#ans_call').show();
+                $('#ans_call').show('shake');
                 $('#num_dial').hide();
                 $('#network').hide();
                 $('#network2').hide();
@@ -461,8 +437,6 @@ $('#sim_airtel').click(function () {
     }
 
 })
-
-
 $('.str_call').on('click', function () {
 
     setTimeout(() => {
@@ -629,9 +603,10 @@ document.getElementById('net_modal').addEventListener('click', function () {
 })
 
 $('#end_call').click(function () {
+   setTimeout(() => {
     var zz = document.getElementById('place_sim').innerText
     console.log(zz);
-    if (zz == 'airtel') {
+    if (zz == 'Airtel') {
         var a = $('#disp_sec').text()
         localStorage.setItem('money', JSON.stringify(amt))
         var get_amt = JSON.parse(localStorage.getItem('money'))
@@ -742,10 +717,11 @@ $('#end_call').click(function () {
         } else {
         }
     }
+   }, 100);
 })
 
 $('#simglo').click(function () {
-    ;['']
+    // ;['']
 
     var e = document.getElementById('maindiv').innerHTML
     var f = e.substr(1, 3)
@@ -861,8 +837,7 @@ $('#simglo').click(function () {
     }
     else if (f == '123' && g == '*' && j == '#') {
 
-        // var h = e.substr(5, 15)
-        // var i = h.length;
+       
         var get_use = JSON.parse(localStorage.getItem('used'))
         var h = e.substr(5, 13)
         // i = parseInt(h)
