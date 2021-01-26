@@ -1,4 +1,33 @@
+body{
+    display: flex;
+    /* justify-content: space-between; */
+}
 
+.main{
+    background-color: rgb(19, 58, 102);
+    border-radius: 5px;
+    padding: 20px;
+    width: 500px;
+    /* margin-left: 500px; */
+}
+#res {
+    background-color: rgba(122, 87, 53, 0.281);
+    /* padding: 10px; */
+    border-radius: 5px;
+    box-shadow: 0 0 15px gray;
+}
+#ptr{
+    background-color: greenyellow;
+}
+#network0 , #amt ,#gene, .del{
+    padding: 2px;
+    border-radius: 3px;
+    box-shadow: 0 0 3px gainsboro;
+    background-color: rgb(128, 128, 128);
+}
+.del{
+    margin:5px 0 0  15px;
+}
 
 ::-webkit-scrollbar {
     width: 8px;
