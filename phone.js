@@ -39,7 +39,6 @@ function remove(key) {
         }
         // var lav = (get_arr[`${key}`].amount
     } else {
-        console.log('npo');
     }
 
     var move = arr.splice(key, 1)
@@ -93,8 +92,10 @@ function date() {
 }
 date()
 var get_amt = JSON.parse(localStorage.getItem('money'))
+var get_glo = JSON.parse(localStorage.getItem('glo'))
 var get_use = JSON.parse(localStorage.getItem('used'))
 amt = get_amt
+cglo = get_glo
 function call() {
     var a = document.getElementById('main').innerHTML = ' '
     document.getElementById('main').style.backgroundColor = 'white'
@@ -488,7 +489,8 @@ document.getElementById('net_modal').addEventListener('click', function () {
     // $('#net_modal').click(function () {
     $("#disp_sec").html(' ')
     var get_amt = JSON.parse(localStorage.getItem('money'))
-    if (get_amt == 0) {
+    var get_glo = JSON.parse(localStorage.getItem('glo'))
+    if (get_amt == 0 || get_glo == 0) {
         song.src = 'audio/recharge.mp3'
         song.play()
         setTimeout(() => {
@@ -502,7 +504,11 @@ document.getElementById('net_modal').addEventListener('click', function () {
             $('#ans_call').hide();
             $('#network3').hide();
             $('#network2').hide();
-            localStorage.setItem('money', JSON.stringify(amt))
+            if (get_amt == 0) {
+                localStorage.setItem('money', JSON.stringify(amt))
+            } else {
+                localStorage.setItem('glo', JSON.stringify(cglo))
+            }
         }, 9000);
     } else {
         sttop = setTimeout(() => {
@@ -548,6 +554,7 @@ document.getElementById('net_modal').addEventListener('click', function () {
                 }, 500);
 
             } else {
+
             }
             u = $('#disp_num').html()
             s = u.slice(0, 3)
@@ -570,8 +577,6 @@ document.getElementById('net_modal').addEventListener('click', function () {
                 startTime = Date.now();
                 timer = setInterval(function printTime() {
                     elapsedTime = Date.now() - startTime;
-                    // print(timeToString(elapsedTime));
-                    // function timeToString(time) {
                     let diffInHrs = elapsedTime / 3600000;
                     let hh = Math.floor(diffInHrs);
 
@@ -587,12 +592,13 @@ document.getElementById('net_modal').addEventListener('click', function () {
                     z = mm * 60 + ss
                     y = z * 0.5
                     am = amt - y
+                    we = cglo - y
                     localStorage.setItem('money', JSON.stringify(am))
                     var get_amt = JSON.parse(localStorage.getItem('money'))
+                    localStorage.setItem('glo', JSON.stringify(we))
+                    var get_amt = JSON.parse(localStorage.getItem('glo'))
 
-                    if (get_amt <= 0) {
-                        // localStorage.setItem('money', JSON.stringify(amt))
-                        // var get_amt = JSON.parse(localStorage.getItem('money'))
+                    if (get_amt <= 0 || get_glo <= 0) {
                         song.pause()
                         song.src = ' '
                         setTimeout(() => {
@@ -615,19 +621,9 @@ document.getElementById('net_modal').addEventListener('click', function () {
                                 $('#network2').hide();
                             }, 9000);
                         }, 100);
-
-                    } else {
                     }
-
-                    // let formattedMM = mm.toString().padStart(2, "0");
-                    // let formattedSS = ss.toString().padStart(2, "0");
-                    // let formattedMS = ms.toString().padStart(2, "0");
-                    // return `${formattedMM}:${formattedSS} `;
-                    // }
                 }, 1000)
-            } else {
-
-            }
+            } 
         }, 500);
     }
 })
@@ -635,126 +631,127 @@ document.getElementById('net_modal').addEventListener('click', function () {
 $('#end_call').click(function () {
     var zz = document.getElementById('place_sim').innerText
     console.log(zz);
-   if (zz == 'airtel') {
-    var a = $('#disp_sec').text()
-    localStorage.setItem('money', JSON.stringify(amt))
-    var get_amt = JSON.parse(localStorage.getItem('money'))
+    if (zz == 'airtel') {
+        var a = $('#disp_sec').text()
+        localStorage.setItem('money', JSON.stringify(amt))
+        var get_amt = JSON.parse(localStorage.getItem('money'))
 
-    if (a != '' && a !== 'calling...') {
-        song.pause()
-        song.src = 'audio/temi.mp3'
-        clearInterval(timerInterval);
-        clearInterval(timer)
-        elapsedTime = 0;
-        e = a.slice(a.length - 3, a.length - 1)
-        m = a.slice(1, 2)
-        n = parseInt(m)
-        o = parseInt(e)
-        p = n * 60 + o
-        // o = 
-        var c = p * 0.5
-        amt = get_amt - c
+        if (a != '' && a !== 'calling...') {
+            song.pause()
+            song.src = 'audio/temi.mp3'
+            clearInterval(timerInterval);
+            clearInterval(timer)
+            elapsedTime = 0;
+            e = a.slice(a.length - 3, a.length - 1)
+            m = a.slice(1, 2)
+            n = parseInt(m)
+            o = parseInt(e)
+            p = n * 60 + o
+            // o = 
+            var c = p * 0.5
+            amt = get_amt - c
 
-        setTimeout(() => {
+            setTimeout(() => {
 
-            localStorage.setItem('money', JSON.stringify(amt))
-            var get_amt = JSON.parse(localStorage.getItem('money'))
-            // if (get_amt >= '0') {
+                localStorage.setItem('money', JSON.stringify(amt))
+                var get_amt = JSON.parse(localStorage.getItem('money'))
+                // if (get_amt >= '0') {
 
-            $('#realcon').show()
-            $('#main').hide()
-            $('#ans_call').hide();
-            $('#num_dial').hide();
-            $('#network').hide();
-            $('#network2').show();
-            $('#network3').hide();
-            $('#net_modal2').html(' ')
-            // $('#net_modal').hide()
-            $('#network2').css({
-                'padding': '180px 45px',
+                $('#realcon').show()
+                $('#main').hide()
+                $('#ans_call').hide();
+                $('#num_dial').hide();
+                $('#network').hide();
+                $('#network2').show();
+                $('#network3').hide();
+                $('#net_modal2').html(' ')
+                // $('#net_modal').hide()
+                $('#network2').css({
+                    'padding': '180px 45px',
 
-            })
-            $('#net_modal2').css({
-                'padding': '10px',
-                'height': '120px',
-                'width': '250px',
-                'z-index': '3',
-                'backgroundColor': 'rgb(34,34,34)',
-            })
+                })
+                $('#net_modal2').css({
+                    'padding': '10px',
+                    'height': '120px',
+                    'width': '250px',
+                    'z-index': '3',
+                    'backgroundColor': 'rgb(34,34,34)',
+                })
 
-            $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
-            $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_amt}. Dial *121# for your balance`)
+                $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
+                $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_amt}. Dial *121# for your balance`)
 
-            amt = get_amt
+                amt = get_amt
 
-        }, 100);
-    } else {
+            }, 100);
+        } else {
+        }
+    } else if (zz == 'glo ng') {
+        var a = $('#disp_sec').text()
+        // localStorage.setItem('glo', JSON.stringify(cglo))
+        var get_glo = JSON.parse(localStorage.getItem('glo'))
+
+        if (a != '' && a !== 'calling...') {
+            song.pause()
+            song.src = 'audio/temi.mp3'
+            clearInterval(timerInterval);
+            clearInterval(timer)
+            elapsedTime = 0;
+            e = a.slice(a.length - 3, a.length - 1)
+            m = a.slice(1, 2)
+            n = parseInt(m)
+            o = parseInt(e)
+            p = n * 60 + o
+            // o = 
+            var c = p * 0.5
+            cglo = get_glo - c
+
+            setTimeout(() => {
+
+                localStorage.setItem('glo', JSON.stringify(cglo))
+                var get_glo = JSON.parse(localStorage.getItem('glo'))
+                // if (get_amt >= '0') {
+
+                $('#realcon').show()
+                $('#main').hide()
+                $('#ans_call').hide();
+                $('#num_dial').hide();
+                $('#network').hide();
+                $('#network2').show();
+                $('#network3').hide();
+                $('#net_modal2').html(' ')
+                // $('#net_modal').hide()
+                $('#network2').css({
+                    'padding': '170px 45px',
+
+                })
+                $('#net_modal2').css({
+                    'padding': '10px',
+                    'height': '120px',
+                    'width': '250px',
+                    'z-index': '3',
+                    'backgroundColor': 'rgb(34,34,34)',
+                })
+
+                $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
+                $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_glo}. Dial #124*1# for your balance`)
+
+                // amt = get_amt
+
+            }, 100);
+        } else {
+        }
     }
-   } else if (zz == 'glo ng') {  
-    var a = $('#disp_sec').text()
-    // localStorage.setItem('glo', JSON.stringify(cglo))
-    var get_glo = JSON.parse(localStorage.getItem('glo'))
-
-    if (a != '' && a !== 'calling...') {
-        song.pause()
-        song.src = 'audio/temi.mp3'
-        clearInterval(timerInterval);
-        clearInterval(timer)
-        elapsedTime = 0;
-        e = a.slice(a.length - 3, a.length - 1)
-        m = a.slice(1, 2)
-        n = parseInt(m)
-        o = parseInt(e)
-        p = n * 60 + o
-        // o = 
-        var c = p * 0.5
-        cglo = get_glo - c
-
-        setTimeout(() => {
-
-            localStorage.setItem('glo', JSON.stringify(cglo))
-            var get_glo = JSON.parse(localStorage.getItem('glo'))
-            // if (get_amt >= '0') {
-
-            $('#realcon').show()
-            $('#main').hide()
-            $('#ans_call').hide();
-            $('#num_dial').hide();
-            $('#network').hide();
-            $('#network2').show();
-            $('#network3').hide();
-            $('#net_modal2').html(' ')
-            // $('#net_modal').hide()
-            $('#network2').css({
-                'padding': '170px 45px',
-
-            })
-            $('#net_modal2').css({
-                'padding': '10px',
-                'height': '120px',
-                'width': '250px',
-                'z-index': '3',
-                'backgroundColor': 'rgb(34,34,34)',
-            })
-
-            $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
-            $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_glo}. Dial #124*1# for your balance`)
-
-            // amt = get_amt
-
-        }, 100);
-    } else {
-    }
-   }
 })
 
-$('#simglo').click(function () {;['']
+$('#simglo').click(function () {
+    ;['']
 
     var e = document.getElementById('maindiv').innerHTML
     var f = e.substr(1, 3)
     var g = e.charAt(0)
     var j = e.charAt(e.length - 1)
-    if (f == '321' && g == '*' && j == '#') {
+    if (e == '#124*1#') {
 
         $('#realcon').show()
         $('#ans_call').hide();
@@ -791,8 +788,61 @@ $('#simglo').click(function () {;['']
                 'width': '250px',
                 'backgroundColor': 'rgb(34,34,34)',
             })
-                var get_glo = JSON.parse(localStorage.getItem('glo'))
-                // var get_amt = JSON.parse(localStorage.getItem('money'))
+            var get_glo = JSON.parse(localStorage.getItem('glo'))
+            $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
+            $('#reg').text(`Dear customer, your account balance is N${get_glo}.`)
+            $('.d_click').on('click', function (params) {
+                $('#realcon').show()
+                $('#main').hide()
+                $('#ans_call').hide();
+                $('#network').hide();
+                $('#network2').hide();
+                $('#num_dial').hide();
+                $('#network3').hide();
+            })
+
+
+
+        }, 3000);
+    } else if (f == '321' && g == '*' && j == '#') {
+
+        $('#realcon').show()
+        $('#ans_call').hide();
+        $('#main').hide()
+        $('#num_dial').hide();
+        $('#network').hide();
+        $('#network3').show();
+        $('#network2').hide();
+        $('#net_modal3').html(' ')
+        $('#net_modal3').css({
+            'padding': '12px',
+            'height': '60px',
+            'z-index': '3',
+            'backgroundColor': 'rgb(34,34,34)',
+        })
+        $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" >USSD code running...</div></div> ');
+        // $('#net_modal3').text(' ')
+        setTimeout(() => {
+            $('#realcon').show()
+            $('#main').hide()
+            $('#ans_call').hide();
+            $('#num_dial').hide();
+            $('#network').hide();
+            $('#network3').show();
+            // $('#reg').text(' ')
+            $('#net_modal3').html(' ')
+            $('#network3').css({
+                'padding': '180px 45px',
+
+            })
+            $('#net_modal3').css({
+                'padding': '10px',
+                'height': '100px',
+                'width': '250px',
+                'backgroundColor': 'rgb(34,34,34)',
+            })
+            var get_glo = JSON.parse(localStorage.getItem('glo'))
+            // var get_amt = JSON.parse(localStorage.getItem('money'))
             $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
             $('#reg').text(`Dear customer, your account balance is N${get_glo}.`)
             $('.d_click').on('click', function (params) {
@@ -816,11 +866,11 @@ $('#simglo').click(function () {;['']
         var get_use = JSON.parse(localStorage.getItem('used'))
         var h = e.substr(5, 13)
         // i = parseInt(h)
-        // console.log(i);
+        console.log(h);
         var i = h.length;
         te = get_use[0].name
         td = get_use[0].pin
-
+        console.log(td);
         if (i == 13 && j == '#' && te == 'glo' && h == td) {
 
             // if (i == 15 && j == '#') {
@@ -862,16 +912,14 @@ $('#simglo').click(function () {;['']
                 // lar = 100
                 // localStorage.setItem('glo', JSON.stringify(lar))
                 var get_glo = JSON.parse(localStorage.getItem('glo'))
-               
-
                 tt = get_use[0].amount
                 tu = parseInt(tt)
-                cglo = lar + get_glo
-                
+                cglo = tu + get_glo
+
                 localStorage.setItem('glo', JSON.stringify(cglo))
                 var get_glo = JSON.parse(localStorage.getItem('glo'))
                 $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
-                $('#reg').text(`Dear customer, your recharge is successful. Your new account balance is N${get_glo}. Dial *321# for your balance`)
+                $('#reg').text(`Dear customer, your recharge is successful. Your new account balance is N${get_glo}. Dial #124*1# for your balance`)
                 $('.d_click').on('click', function (params) {
                     $('#realcon').show()
                     $('#main').hide()
