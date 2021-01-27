@@ -556,11 +556,12 @@ margin-left: 180px;
     justify-content: space-between;
 }
 .str_call{
-    /* background-color: darkgreen; */
+    background-color: darkgreen;
     height: inherit;
     width: 15%;
     padding: 20px;
 }
+
 .tele2{
     color: white;
     font-size: 20px;
