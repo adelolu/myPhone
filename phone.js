@@ -994,3 +994,6 @@ $('#simglo').click(function () {
     }
 
 })
+
+
+
