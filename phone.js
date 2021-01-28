@@ -617,7 +617,7 @@ document.getElementById('net_modal').addEventListener('click', function () {
                         }
                     }, 1000)
                 }, 10000);
-            }else if (aa == 'block' && kk == 'glo ng') {
+            } else if (aa == 'block' && kk == 'glo ng') {
 
                 setTimeout(() => {
                     startTime = Date.now();
@@ -720,7 +720,7 @@ $('#end_call').click(function () {
                     $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
                     $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_amt}. Dial *121# for your balance`)
 
-                  
+
 
                 }, 100);
             } else {
@@ -1046,3 +1046,5 @@ $('#simglo').click(function () {
 
 })
 document.getElementById('simglo').addEventListener('click', real)
+
+   

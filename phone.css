@@ -8,8 +8,9 @@ body{
     border-radius: 5px;
     padding: 20px;
     width: 500px;
-    /* margin-left: 500px; */
+    margin-left: 50px;
 }
+
 #res {
     background-color: rgba(122, 87, 53, 0.281);
     /* padding: 10px; */
@@ -59,6 +60,7 @@ body{
     width: 350px;
     border-radius: 35px;
     border: 3px solid silver;
+    /* z-index: 89; */
 }
 #volume{
     position: absolute;
@@ -71,13 +73,13 @@ body{
     z-index: -1;
 }
 #on{
-    position: absolute;
+    position: relative;
     width: 10px;
     height: 40px;
     border-radius: 7px;
     background-color: rgba(65, 7, 7, 0.897);
-    top: 200px;
-    left: 370px;
+    top: -430px;
+    left: 343px;
     z-index: -1;
 }
 #head{
@@ -116,6 +118,15 @@ body{
 #main{
     position: relative;
     height: 494px;
+    z-index: 6;
+}
+#black{
+    position: relative;
+    top: -584px;
+    background-color: black;
+    height: 494px;
+    z-index: 8;
+    width: 344px;
 }
 #foot{
     position: relative;
@@ -530,7 +541,7 @@ margin-left: 180px;
 }
 #scrollconlist{
     position: relative;
-    top: 30px;
+    top: 20px;
     height: 320px;
     overflow: auto;
     /* background-color: yellow; */
@@ -556,7 +567,7 @@ margin-left: 180px;
     justify-content: space-between;
 }
 .str_call{
-    background-color: darkgreen;
+    /* background-color: darkgreen; */
     height: inherit;
     width: 15%;
     padding: 20px;
