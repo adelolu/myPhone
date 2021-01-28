@@ -65,11 +65,7 @@ function date() {
     document.getElementById('date').innerHTML = `${days[day]} ${mdate} ${months[month]}`
 }
 date()
-var get_amt = JSON.parse(localStorage.getItem('money'))
-var get_glo = JSON.parse(localStorage.getItem('glo'))
 var get_use = JSON.parse(localStorage.getItem('used'))
-amt = get_amt
-cglo = get_glo
 function call() {
     var a = document.getElementById('main').innerHTML = ' '
     document.getElementById('main').style.backgroundColor = 'white'
@@ -155,12 +151,12 @@ $(function (params) {
 })
 $('#green_call').click(function green() {
     var a = document.getElementById('maindiv').innerText
-    $('#realcon').show()
+    $('#realcon').show(500)
     $('#main').hide()
     $('#num_dial').hide();
     $('#ans_call').hide();
     $('#network').show('slide');
-    $('#net_modal').show(3000);
+    $('#net_modal').show(1000);
     $('#network2').hide();
     $('#network3').hide();
     $('#simglo').html(' ')
@@ -173,7 +169,7 @@ $('#green_call').click(function green() {
 
 })
 document.getElementById('network').addEventListener('click', function () {
-    $('#realcon').show()
+    $('#realcon').show(1000)
     $('#main').hide()
     $('#num_dial').hide();
     $('#ans_call').hide();
@@ -185,7 +181,7 @@ document.getElementById('network').addEventListener('click', function () {
 }, true)
 
 document.getElementById('network3').addEventListener('click', function () {
-    $('#realcon').show()
+    $('#realcon').show(500)
     $('#main').hide()
     $('#num_dial').hide();
     $('#ans_call').hide();
@@ -197,7 +193,7 @@ document.getElementById('network3').addEventListener('click', function () {
 }, true)
 
 document.getElementById('network2').addEventListener('click', function () {
-    $('#realcon').show()
+    $('#realcon').show(1000)
     $('#main').hide()
     $('#num_dial').hide();
     $('#ans_call').hide();
@@ -215,11 +211,11 @@ $('.str_call').on('click', function () {
             cla[s].addEventListener('click', real)
 
         }
-        $('#realcon').show()
+        $('#realcon').show(500)
         $('#main').hide()
         $('#num_dial').hide();
         $('#ans_call').hide();
-        $('#network').show();
+        $('#network').show(500);
         $('#network2').hide();
         $('#network3').hide();
         $('#simglo').html(' ')
@@ -232,8 +228,6 @@ $('.str_call').on('click', function () {
 })
 var b = '';
 function real(l) {
-    // console.log(l);
-    // console.log(l.target.parentElement.children[0].children[1].children[0].innerText);
     b = l.target.parentElement.children[0].children[1].children[0].innerText;
 }
 
@@ -245,7 +239,7 @@ $('#sim_airtel').click(function () {
     get_car = JSON.parse(localStorage.getItem('card'))
     if (f == '121' && g == '*' && j == '#') {
 
-        $('#realcon').show()
+        $('#realcon').show(500)
         $('#ans_call').hide();
         $('#main').hide()
         $('#num_dial').hide();
@@ -260,15 +254,13 @@ $('#sim_airtel').click(function () {
             'backgroundColor': 'rgb(34,34,34)',
         })
         $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" >USSD code running...</div></div> ');
-        // $('#net_modal3').text(' ')
         setTimeout(() => {
-            $('#realcon').show()
+            $('#realcon').show(500)
             $('#main').hide()
             $('#ans_call').hide();
             $('#num_dial').hide();
             $('#network').hide();
-            $('#network3').show();
-            // $('#reg').text(' ')
+            $('#network3').show(500);
             $('#net_modal3').html(' ')
             $('#network3').css({
                 'padding': '180px 45px',
@@ -284,7 +276,7 @@ $('#sim_airtel').click(function () {
             $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
             $('#reg').text(`Dear customer, your account balance is N${get_amt}.`)
             $('.d_click').on('click', function (params) {
-                $('#realcon').show()
+                $('#realcon').show(500)
                 $('#main').hide()
                 $('#ans_call').hide();
                 $('#network').hide();
@@ -307,12 +299,12 @@ $('#sim_airtel').click(function () {
             for (let i = 0; i < get_car.length; i++) {
                 var ii = get_car[i][0].pin;
                 if (ii == td && e == ii) {
-                    $('#realcon').show()
+                    $('#realcon').show(500)
                     $('#ans_call').hide();
                     $('#main').hide()
                     $('#num_dial').hide();
                     $('#network').hide();
-                    $('#network3').show();
+                    $('#network3').show(500);
                     $('#network2').hide();
                     $('#net_modal3').html(' ')
                     $('#net_modal3').css({
@@ -323,13 +315,12 @@ $('#sim_airtel').click(function () {
                     $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" ></div></div> ');
                     $("#ussd").html('USSD code running...')
                     setTimeout(() => {
-                        $('#realcon').show()
+                        $('#realcon').show(500)
                         $('#main').hide()
                         $('#ans_call').hide();
                         $('#num_dial').hide();
                         $('#network').hide();
                         $('#network2').hide();
-                        // $('#network3').show();
                         $('#net_modal3').html(' ')
                         $('#net_modal3').css({
                             'padding': '12px',
@@ -343,7 +334,7 @@ $('#sim_airtel').click(function () {
 
                         })
                         $('.d_click').on('click', function (params) {
-                            $('#realcon').show()
+                            $('#realcon').show(500)
                             $('#main').hide()
                             $('#ans_call').hide();
                             $('#network').hide();
@@ -357,12 +348,12 @@ $('#sim_airtel').click(function () {
                 }
             }
 
-            $('#realcon').show()
+            $('#realcon').show(400)
             $('#ans_call').hide();
             $('#main').hide()
             $('#num_dial').hide();
             $('#network').hide();
-            $('#network3').show(2000);
+            $('#network3').show(100);
             $('#network2').hide();
             $('#net_modal3').html(' ')
             $('#net_modal3').css({
@@ -372,15 +363,14 @@ $('#sim_airtel').click(function () {
                 'backgroundColor': 'rgb(34,34,34)',
             })
             $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" >USSD code running...</div></div> ');
-            // $('#net_modal3').text(' ')
+
             setTimeout(() => {
-                $('#realcon').show()
+                $('#realcon').show(500)
                 $('#main').hide()
                 $('#ans_call').hide();
                 $('#num_dial').hide();
                 $('#network').hide();
-                $('#network3').show(3000);
-                // $('#reg').text(' ')
+                $('#network3').show(1000);
                 $('#net_modal3').html(' ')
                 $('#network3').css({
                     'padding': '175px 45px',
@@ -401,7 +391,7 @@ $('#sim_airtel').click(function () {
                 $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
                 $('#reg').text(`Dear customer, your recharge of ${tt} is successful. Your new account balance is N${get_amt}. Dial *121# for your balance`)
                 $('.d_click').on('click', function () {
-                    $('#realcon').show()
+                    $('#realcon').show(500)
                     $('#main').hide()
                     $('#ans_call').hide();
                     $('#network').hide();
@@ -411,12 +401,12 @@ $('#sim_airtel').click(function () {
                 })
             }, 3000);
         } else {
-            $('#realcon').show()
+            $('#realcon').show(500)
             $('#ans_call').hide();
             $('#main').hide()
             $('#num_dial').hide();
             $('#network').hide();
-            $('#network3').show();
+            $('#network3').show(500);
             $('#network2').hide();
             $('#net_modal3').html(' ')
             $('#net_modal3').css({
@@ -427,13 +417,12 @@ $('#sim_airtel').click(function () {
             $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" ></div></div> ');
             $("#ussd").html('USSD code running...')
             setTimeout(() => {
-                $('#realcon').show()
+                $('#realcon').show(500)
                 $('#main').hide()
                 $('#ans_call').hide();
                 $('#num_dial').hide();
                 $('#network').hide();
                 $('#network2').hide();
-                // $('#network3').show();
                 $('#net_modal3').html(' ')
                 $('#net_modal3').css({
                     'padding': '12px',
@@ -447,7 +436,7 @@ $('#sim_airtel').click(function () {
 
                 })
                 $('.d_click').on('click', function (params) {
-                    $('#realcon').show()
+                    $('#realcon').show(500)
                     $('#main').hide()
                     $('#ans_call').hide();
                     $('#network').hide();
@@ -460,13 +449,15 @@ $('#sim_airtel').click(function () {
 
         }
     } else {
-      
-        if (e.length == 0 ) {
+        $('#place_sim').html('Airtel')
+        $('#place_sim').css({
+            'color': 'orange'
+        })
+
+        if (e.length == 0) {
 
             if (b.length != 0) {
                 setTimeout(() => {
-                    // var a = Math.floor(Math.random() * 1000000000 + 1)
-                    // var b = '080' + a
                     $('#realcon').hide()
                     $('#main').hide()
                     $('#ans_call').show(3000);
@@ -512,29 +503,24 @@ function print(txt) {
     document.getElementById("disp_sec").innerHTML = txt;
 }
 document.getElementById('net_modal').addEventListener('click', function () {
-
+    var aa = document.getElementById('ans_call').style.display
     $("#disp_sec").html(' ')
     var get_amt = JSON.parse(localStorage.getItem('money'))
     var get_glo = JSON.parse(localStorage.getItem('glo'))
-    if (get_amt == 0 || get_glo == 0) {
+    if (get_amt <= 0 || get_glo <= 0 && aa == 'block') {
         song.src = 'audio/recharge.mp3'
         song.play()
         setTimeout(() => {
             song.pause()
-            // song.src = ' '
             song.src = 'audio/temi.mp3'
-            $('#realcon').show()
+            $('#realcon').show(500)
             $('#num_dial').hide()
             $('#main').hide();
             $('#network').hide();
             $('#ans_call').hide();
             $('#network3').hide();
             $('#network2').hide();
-            if (get_amt == 0) {
-                localStorage.setItem('money', JSON.stringify(amt))
-            } else {
-                localStorage.setItem('glo', JSON.stringify(cglo))
-            }
+
         }, 9000);
     } else {
         sttop = setTimeout(() => {
@@ -548,6 +534,7 @@ document.getElementById('net_modal').addEventListener('click', function () {
                         song.pause()
                         song.src = ' '
                         setTimeout(() => {
+
                             song.src = 'audio/omo.mp3'
                             song.play()
                             startTime = Date.now();
@@ -569,7 +556,6 @@ document.getElementById('net_modal').addEventListener('click', function () {
 
                                     let formattedMM = mm.toString().padStart(2, "0");
                                     let formattedSS = ss.toString().padStart(2, "0");
-                                    // let formattedMS = ms.toString().padStart(2, "0");
                                     return `${formattedMM}:${formattedSS} `;
                                 }
                             }, 1000)
@@ -579,89 +565,117 @@ document.getElementById('net_modal').addEventListener('click', function () {
                     }, 10000);
                 }, 500);
 
-            } else {
-
             }
-            u = $('#disp_num').html()
-            s = u.slice(0, 3)
-            if (s == '070') {
-                $('#place_sim').html('glo ng')
-                $('#place_sim').css({
-                    'color': 'aqua'
-                })
-            } else if (s == '080') {
-                $('#place_sim').html('Airtel')
-                $('#place_sim').css({
-                    'color': 'orange'
-                })
-            }
+            var kk = document.getElementById('place_sim').innerText
+            if (aa == 'block' && kk == 'Airtel') {
 
+                setTimeout(() => {
+                    startTime = Date.now();
 
-            if (aa == 'block') {
+                    timer = setInterval(function printTime() {
+                        elapsedTime = Date.now() - startTime;
+                        let diffInHrs = elapsedTime / 3600000;
+                        let hh = Math.floor(diffInHrs);
 
-                // $('#place_sim').html('hh')
-                startTime = Date.now();
-                timer = setInterval(function printTime() {
-                    elapsedTime = Date.now() - startTime;
-                    let diffInHrs = elapsedTime / 3600000;
-                    let hh = Math.floor(diffInHrs);
+                        let diffInMin = (diffInHrs - hh) * 60;
+                        let mm = Math.floor(diffInMin);
 
-                    let diffInMin = (diffInHrs - hh) * 60;
-                    let mm = Math.floor(diffInMin);
+                        let diffInSec = (diffInMin - mm) * 60;
+                        let ss = Math.floor(diffInSec);
 
-                    let diffInSec = (diffInMin - mm) * 60;
-                    let ss = Math.floor(diffInSec);
+                        let diffInMs = (diffInSec - ss) * 100;
+                        let ms = Math.floor(diffInMs);
+                        var get_amt = JSON.parse(localStorage.getItem('money'))
+                        z = mm * 60 + ss
+                        y = z * 0.5
+                        amt = get_amt - y
+                        localStorage.setItem('money', JSON.stringify(amt))
+                        var get_amt = JSON.parse(localStorage.getItem('money'))
 
-                    let diffInMs = (diffInSec - ss) * 100;
-                    let ms = Math.floor(diffInMs);
-
-                    z = mm * 60 + ss
-                    y = z * 0.5
-                    am = amt - y
-                    we = cglo - y
-                    localStorage.setItem('money', JSON.stringify(am))
-                    var get_amt = JSON.parse(localStorage.getItem('money'))
-                    localStorage.setItem('glo', JSON.stringify(we))
-                    var get_amt = JSON.parse(localStorage.getItem('glo'))
-
-                    if (get_amt <= 0 || get_glo <= 0) {
-                        song.pause()
-                        song.src = ' '
-                        setTimeout(() => {
-
-                            song.src = 'audio/recharge.mp3'
-                            song.play()
-                            clearInterval(timer)
-                            clearInterval(timerInterval)
+                        if (get_amt <= 0) {
+                            song.pause()
+                            song.src = ' '
                             setTimeout(() => {
-                                clearTimeout(sttop)
-                                song.pause()
-                                // song.src = ' '
-                                song.src = 'audio/temi.mp3'
-                                $('#realcon').show()
-                                $('#num_dial').hide()
-                                $('#main').hide();
-                                $('#network').hide();
-                                $('#ans_call').hide();
-                                $('#network3').hide();
-                                $('#network2').hide();
-                            }, 9000);
-                        }, 100);
-                    }
-                }, 1000)
+
+                                song.src = 'audio/recharge.mp3'
+                                song.play()
+                                clearInterval(timer)
+                                clearInterval(timerInterval)
+                                setTimeout(() => {
+                                    clearTimeout(sttop)
+                                    song.pause()
+                                    song.src = 'audio/temi.mp3'
+                                    $('#realcon').show(500)
+                                    $('#num_dial').hide()
+                                    $('#main').hide();
+                                    $('#network').hide();
+                                    $('#ans_call').hide();
+                                    $('#network3').hide();
+                                    $('#network2').hide();
+                                }, 9000);
+                            }, 100);
+                        }
+                    }, 1000)
+                }, 10000);
+            }else if (aa == 'block' && kk == 'glo ng') {
+
+                setTimeout(() => {
+                    startTime = Date.now();
+
+                    timer = setInterval(function printTime() {
+                        elapsedTime = Date.now() - startTime;
+                        let diffInHrs = elapsedTime / 3600000;
+                        let hh = Math.floor(diffInHrs);
+
+                        let diffInMin = (diffInHrs - hh) * 60;
+                        let mm = Math.floor(diffInMin);
+
+                        let diffInSec = (diffInMin - mm) * 60;
+                        let ss = Math.floor(diffInSec);
+
+                        let diffInMs = (diffInSec - ss) * 100;
+                        let ms = Math.floor(diffInMs);
+                        var get_glo = JSON.parse(localStorage.getItem('glo'))
+                        z = mm * 60 + ss
+                        y = z * 0.5
+                        glo = get_glo - y
+                        localStorage.setItem('glo', JSON.stringify(glo))
+                        var get_glo = JSON.parse(localStorage.getItem('glo'))
+
+                        if (get_glo <= 0) {
+                            song.pause()
+                            song.src = ' '
+                            setTimeout(() => {
+
+                                song.src = 'audio/recharge.mp3'
+                                song.play()
+                                clearInterval(timer)
+                                clearInterval(timerInterval)
+                                setTimeout(() => {
+                                    clearTimeout(sttop)
+                                    song.pause()
+                                    song.src = 'audio/temi.mp3'
+                                    $('#realcon').show(500)
+                                    $('#num_dial').hide()
+                                    $('#main').hide();
+                                    $('#network').hide();
+                                    $('#ans_call').hide();
+                                    $('#network3').hide();
+                                    $('#network2').hide();
+                                }, 9000);
+                            }, 100);
+                        }
+                    }, 1000)
+                }, 10000);
             }
         }, 500);
     }
 })
-// amt = 100;
-
 $('#end_call').click(function () {
     setTimeout(() => {
         var zz = document.getElementById('place_sim').innerText
         if (zz == 'Airtel') {
             var a = $('#disp_sec').text()
-            localStorage.setItem('money', JSON.stringify(amt))
-            var get_amt = JSON.parse(localStorage.getItem('money'))
 
             if (a != '' && a !== 'calling...') {
                 song.pause()
@@ -674,7 +688,7 @@ $('#end_call').click(function () {
                 n = parseInt(m)
                 o = parseInt(e)
                 p = n * 60 + o
-                // o = 
+                var get_amt = JSON.parse(localStorage.getItem('money'))
                 var c = p * 0.5
                 amt = get_amt - c
 
@@ -682,17 +696,15 @@ $('#end_call').click(function () {
 
                     localStorage.setItem('money', JSON.stringify(amt))
                     var get_amt = JSON.parse(localStorage.getItem('money'))
-                    // if (get_amt >= '0') {
 
-                    $('#realcon').show()
+                    $('#realcon').show(500)
                     $('#main').hide()
                     $('#ans_call').hide();
                     $('#num_dial').hide();
                     $('#network').hide();
-                    $('#network2').show();
+                    $('#network2').show(500);
                     $('#network3').hide();
                     $('#net_modal2').html(' ')
-                    // $('#net_modal').hide()
                     $('#network2').css({
                         'padding': '180px 45px',
 
@@ -708,7 +720,7 @@ $('#end_call').click(function () {
                     $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
                     $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_amt}. Dial *121# for your balance`)
 
-                    // amt = get_amt
+                  
 
                 }, 100);
             } else {
@@ -727,25 +739,22 @@ $('#end_call').click(function () {
                 n = parseInt(m)
                 o = parseInt(e)
                 p = n * 60 + o
-                // o = 
                 var c = p * 0.5
-                cglo = get_glo - c
+                glo = get_glo - c
 
                 setTimeout(() => {
 
-                    localStorage.setItem('glo', JSON.stringify(cglo))
+                    localStorage.setItem('glo', JSON.stringify(glo))
                     var get_glo = JSON.parse(localStorage.getItem('glo'))
-                    // if (get_amt >= '0') {
 
-                    $('#realcon').show()
+                    $('#realcon').show(500)
                     $('#main').hide()
                     $('#ans_call').hide();
                     $('#num_dial').hide();
                     $('#network').hide();
-                    $('#network2').show();
+                    $('#network2').show(500);
                     $('#network3').hide();
                     $('#net_modal2').html(' ')
-                    // $('#net_modal').hide()
                     $('#network2').css({
                         'padding': '170px 45px',
 
@@ -761,10 +770,7 @@ $('#end_call').click(function () {
                     $('#net_modal2').append('<div id="after_call" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
                     $('#after_call').text(`Dear customer, your last call lasted for ${a}. Your new account balance is N${get_glo}. Dial #124*1# for your balance`)
 
-                    // amt = get_amt
-
                 }, 100);
-            } else {
             }
         }
     }, 100);
@@ -778,12 +784,12 @@ $('#simglo').click(function () {
 
     if (e == '#124*1#') {
 
-        $('#realcon').show()
+        $('#realcon').show(500)
         $('#ans_call').hide();
         $('#main').hide()
         $('#num_dial').hide();
         $('#network').hide();
-        $('#network3').show();
+        $('#network3').show(500);
         $('#network2').hide();
         $('#net_modal3').html(' ')
         $('#net_modal3').css({
@@ -793,15 +799,13 @@ $('#simglo').click(function () {
             'backgroundColor': 'rgb(34,34,34)',
         })
         $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" >USSD code running...</div></div> ');
-        // $('#net_modal3').text(' ')
         setTimeout(() => {
-            $('#realcon').show()
+            $('#realcon').show(500)
             $('#main').hide()
             $('#ans_call').hide();
             $('#num_dial').hide();
             $('#network').hide();
-            $('#network3').show();
-            // $('#reg').text(' ')
+            $('#network3').show(500);
             $('#net_modal3').html(' ')
             $('#network3').css({
                 'padding': '180px 45px',
@@ -817,7 +821,7 @@ $('#simglo').click(function () {
             $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
             $('#reg').text(`Dear customer, your account balance is N${get_glo}.`)
             $('.d_click').on('click', function (params) {
-                $('#realcon').show()
+                $('#realcon').show(500)
                 $('#main').hide()
                 $('#ans_call').hide();
                 $('#network').hide();
@@ -840,12 +844,12 @@ $('#simglo').click(function () {
             for (let i = 0; i < get_car.length; i++) {
                 var ii = get_car[i][0].pin;
                 if (ii == td && aab == ' ') {
-                    $('#realcon').show()
+                    $('#realcon').show(500)
                     $('#ans_call').hide();
                     $('#main').hide()
                     $('#num_dial').hide();
                     $('#network').hide();
-                    $('#network3').show();
+                    $('#network3').show(500);
                     $('#network2').hide();
                     $('#net_modal3').html(' ')
                     $('#net_modal3').css({
@@ -856,13 +860,12 @@ $('#simglo').click(function () {
                     $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" ></div></div> ');
                     $("#ussd").html('USSD code running...')
                     setTimeout(() => {
-                        $('#realcon').show()
+                        $('#realcon').show(500)
                         $('#main').hide()
                         $('#ans_call').hide();
                         $('#num_dial').hide();
                         $('#network').hide();
                         $('#network2').hide();
-                        // $('#network3').show();
                         $('#net_modal3').html(' ')
                         $('#net_modal3').css({
                             'padding': '12px',
@@ -876,7 +879,7 @@ $('#simglo').click(function () {
 
                         })
                         $('.d_click').on('click', function (params) {
-                            $('#realcon').show()
+                            $('#realcon').show(500)
                             $('#main').hide()
                             $('#ans_call').hide();
                             $('#network').hide();
@@ -888,12 +891,12 @@ $('#simglo').click(function () {
                     }, 3500);
                     break;
                 } else {
-                    $('#realcon').show()
+                    $('#realcon').show(500)
                     $('#ans_call').hide();
                     $('#main').hide()
                     $('#num_dial').hide();
                     $('#network').hide();
-                    $('#network3').show();
+                    $('#network3').show(500);
                     $('#network2').hide();
                     $('#net_modal3').html(' ')
                     $('#net_modal3').css({
@@ -905,12 +908,12 @@ $('#simglo').click(function () {
                     $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" >USSD code running...</div></div> ');
 
                     setTimeout(() => {
-                        $('#realcon').show()
+                        $('#realcon').show(1000)
                         $('#main').hide()
                         $('#ans_call').hide();
                         $('#num_dial').hide();
                         $('#network').hide();
-                        $('#network3').show();
+                        $('#network3').show(500);
                         $('#net_modal3').html(' ')
                         $('#network3').css({
                             'padding': '180px 45px',
@@ -925,14 +928,14 @@ $('#simglo').click(function () {
                         var get_glo = JSON.parse(localStorage.getItem('glo'))
                         tt = get_use[0].amount
                         tu = parseInt(tt)
-                        cglo = tu + get_glo
+                        glo = tu + get_glo
 
-                        localStorage.setItem('glo', JSON.stringify(cglo))
+                        localStorage.setItem('glo', JSON.stringify(glo))
                         var get_glo = JSON.parse(localStorage.getItem('glo'))
                         $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
-                        $('#reg').text(`Dear customer, your recharge is successful. Your new account balance is N${get_glo}. Dial #124*1# for your balance`)
+                        $('#reg').text(`Dear customer, your recharge of ${tt} successful. Your new account balance is N${get_glo}. Dial #124*1# for your balance`)
                         $('.d_click').on('click', function (params) {
-                            $('#realcon').show()
+                            $('#realcon').show(500)
                             $('#main').hide()
                             $('#ans_call').hide();
                             $('#network').hide();
@@ -945,12 +948,12 @@ $('#simglo').click(function () {
             }
 
         } else {
-            $('#realcon').show()
+            $('#realcon').show(500)
             $('#ans_call').hide();
             $('#main').hide()
             $('#num_dial').hide();
             $('#network').hide();
-            $('#network3').show();
+            $('#network3').show(500);
             $('#network2').hide();
             $('#net_modal3').html(' ')
             $('#net_modal3').css({
@@ -961,13 +964,12 @@ $('#simglo').click(function () {
             $('#net_modal3').append('<div id= "pos"><span class="spinner-border text-primary"></span> <div id="ussd" ></div></div> ');
             $("#ussd").html('USSD code running...')
             setTimeout(() => {
-                $('#realcon').show()
+                $('#realcon').show(500)
                 $('#main').hide()
                 $('#ans_call').hide();
                 $('#num_dial').hide();
                 $('#network').hide();
                 $('#network2').hide();
-                // $('#network3').show();
                 $('#net_modal3').html(' ')
                 $('#net_modal3').css({
                     'padding': '12px',
@@ -981,7 +983,7 @@ $('#simglo').click(function () {
 
                 })
                 $('.d_click').on('click', function (params) {
-                    $('#realcon').show()
+                    $('#realcon').show(500)
                     $('#main').hide()
                     $('#ans_call').hide();
                     $('#network').hide();
@@ -993,17 +995,20 @@ $('#simglo').click(function () {
             }, 3500);
 
         }
-    }  else {
-      
-        if (e.length == 0 ) {
+    } else {
+        $('#place_sim').html('glo ng')
+        $('#place_sim').css({
+            'color': 'aqua'
+        })
+
+        if (e.length == 0) {
 
             if (b.length != 0) {
                 setTimeout(() => {
-                    // var a = Math.floor(Math.random() * 1000000000 + 1)
-                    // var b = '080' + a
+
                     $('#realcon').hide()
                     $('#main').hide()
-                    $('#ans_call').show(3000);
+                    $('#ans_call').show(500);
                     $('#num_dial').hide();
                     $('#network').hide();
                     $('#network2').hide();
@@ -1013,15 +1018,15 @@ $('#simglo').click(function () {
             } else {
                 setTimeout(() => {
                     var a = Math.floor(Math.random() * 1000000000 + 1)
-                    var d = '080' + a
+                    var f = '070' + a
                     $('#realcon').hide()
                     $('#main').hide()
-                    $('#ans_call').show(3000);
+                    $('#ans_call').show(500);
                     $('#num_dial').hide();
                     $('#network').hide();
                     $('#network2').hide();
                     $('#network3').hide();
-                    $('#disp_num').html(d)
+                    $('#disp_num').html(f)
                 }, 500);
             }
         } else if (e.length !== 0) {
@@ -1040,3 +1045,4 @@ $('#simglo').click(function () {
 
 
 })
+document.getElementById('simglo').addEventListener('click', real)
