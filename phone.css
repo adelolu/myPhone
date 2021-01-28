@@ -1,3 +1,4 @@
+
 body{
     display: flex;
     /* justify-content: space-between; */
@@ -10,7 +11,6 @@ body{
     width: 500px;
     margin-left: 50px;
 }
-
 #res {
     background-color: rgba(122, 87, 53, 0.281);
     /* padding: 10px; */
@@ -57,10 +57,10 @@ body{
 #myPhone{
     background-color: rgba(0, 0, 0, 0.897);
     height: 600px;
-    width: 350px;
+    width: 344px;
     border-radius: 35px;
+    padding: 0 5px;
     border: 3px solid silver;
-    /* z-index: 89; */
 }
 #volume{
     position: absolute;
@@ -69,17 +69,17 @@ body{
     border-radius: 7px;
     background-color: rgba(65, 7, 7, 0.897);
     top: 100px;
-    left: 370px;
+    left: 365px;
     z-index: -1;
 }
 #on{
-    position: relative;
+    position: absolute;
     width: 10px;
     height: 40px;
     border-radius: 7px;
     background-color: rgba(65, 7, 7, 0.897);
-    top: -430px;
-    left: 343px;
+    top: 200px;
+    left: 365px;
     z-index: -1;
 }
 #head{
@@ -118,14 +118,6 @@ body{
 #main{
     position: relative;
     height: 494px;
-    z-index: 6;
-}
-#black{
-    position: relative;
-    top: -584px;
-    background-color: black;
-    height: 494px;
-    z-index: 8;
     width: 344px;
 }
 #foot{
@@ -137,7 +129,8 @@ body{
     /* background-color: rgba(0, 0, 0, 0.897); */
 }
 #content{
-    margin:0 8px;
+    /* margin:0 8px; */
+    width: 333px;
     background-image: url(imgs/red.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -248,6 +241,7 @@ body{
     width: 329px;
     background-color: white;
     display: none;
+    /* margin: 0 1%; */
 
 }
 #searchcon{
@@ -541,7 +535,7 @@ margin-left: 180px;
 }
 #scrollconlist{
     position: relative;
-    top: 20px;
+    top: 30px;
     height: 320px;
     overflow: auto;
     /* background-color: yellow; */
