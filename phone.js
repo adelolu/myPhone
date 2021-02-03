@@ -508,6 +508,7 @@ document.getElementById('net_modal').addEventListener('click', function () {
     var get_amt = JSON.parse(localStorage.getItem('money'))
     var get_glo = JSON.parse(localStorage.getItem('glo'))
     if (get_amt <= 0 || get_glo <= 0 && aa == 'block') {
+
         song.src = 'audio/recharge.mp3'
         song.play()
         setTimeout(() => {
@@ -596,7 +597,8 @@ document.getElementById('net_modal').addEventListener('click', function () {
                             song.pause()
                             song.src = ' '
                             setTimeout(() => {
-
+                                amt = 0
+                                localStorage.setItem('money', JSON.stringify(amt))
                                 song.src = 'audio/recharge.mp3'
                                 song.play()
                                 clearInterval(timer)
@@ -646,7 +648,8 @@ document.getElementById('net_modal').addEventListener('click', function () {
                             song.pause()
                             song.src = ' '
                             setTimeout(() => {
-
+                                glo = 0
+                                localStorage.setItem('glo', JSON.stringify(glo))
                                 song.src = 'audio/recharge.mp3'
                                 song.play()
                                 clearInterval(timer)
@@ -925,11 +928,12 @@ $('#simglo').click(function () {
                             'width': '250px',
                             'backgroundColor': 'rgb(34,34,34)',
                         })
-                        var get_glo = JSON.parse(localStorage.getItem('glo'))
-                        tt = get_use[0].amount
-                        tu = parseInt(tt)
-                        glo = tu + get_glo
 
+                        tt = get_use[0].amount
+                        tou = parseInt(tt)
+
+                        var get_glo = JSON.parse(localStorage.getItem('glo'))
+                        glo = get_glo + tou
                         localStorage.setItem('glo', JSON.stringify(glo))
                         var get_glo = JSON.parse(localStorage.getItem('glo'))
                         $('#net_modal3').append('<div id="reg" class= "recharge"></div> <button class="btn d_click text-primary">ok</button>');
@@ -1008,7 +1012,7 @@ $('#simglo').click(function () {
 
                     $('#realcon').hide()
                     $('#main').hide()
-                    $('#ans_call').show(500);
+                    $('#ans_call').show(500); 
                     $('#num_dial').hide();
                     $('#network').hide();
                     $('#network2').hide();
@@ -1033,7 +1037,7 @@ $('#simglo').click(function () {
             setTimeout(() => {
                 $('#realcon').hide()
                 $('#main').hide()
-                $('#ans_call').show('shake');
+                $('#ans_call').show();
                 $('#num_dial').hide();
                 $('#network').hide();
                 $('#network2').hide();
@@ -1046,5 +1050,57 @@ $('#simglo').click(function () {
 
 })
 document.getElementById('simglo').addEventListener('click', real)
+document.getElementById('on').addEventListener('click', disp)
 
-   
+function disp(params) {
+    var a = document.getElementById('black').style.display
+    if (a == 'none') {
+        $('#black').show()
+        // $('#main').hide()
+       
+
+    } else {
+        $('#black').hide()
+        $('#realcon').hide()
+        $('#main').show()
+        $('#ans_call').hide();
+        $('#num_dial').hide();
+        $('#network').hide();
+        $('#network2').hide();
+        $('#network3').hide();
+        clearInterval(timer)
+        clearInterval(timerInterval)
+    }
+    ;
+
+}
+
+function dragStart(event) {
+    console.log(event);
+    event.target.clientX
+    event.target.clientY
+    event.dataTransfer.setData("Text", event.target.id);
+}
+
+function dragEnd(event) {
+    console.log(event);
+    event.target.clientX
+    event.target.clientY
+
+    // document.getElementById("demo").innerHTML = "Finished dragging the p element.";
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    console.log(event);
+    event.target.clientX
+    event.target.clientY
+    console.log(event.currentTarget = event.target.clientY);
+
+    event.target.appendChild( event.target.clientX);
+}

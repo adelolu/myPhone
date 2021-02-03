@@ -23,10 +23,10 @@
         <div id="main">
             <div id="content">
                 <div id="content1">
-                    <div id="content2">
+                    <div class="droptarget" id="content2" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <!-- <img id="back_img" src="imgs/red.jpg" alt=""> -->
                         <div id="date"></div>
-                        <div id="gram">
+                        <div id="gram dragtarget" ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true">
                             <img src="imgs/insta2.png" alt="">
                         </div>
                         <div id="snap">
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div id="realcon" >
+        <div id="realcon"    >
             <div id="searchcon">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text goo_logo" id="addon-wrapping"><i class="bi bi-search"></i></span>
@@ -250,7 +250,7 @@
 
             <div class="home2"></div>
         </div>
-        <div id="num_dial" >
+        <div id="num_dial"    >
             <div id="suggest_num">
                 <div class="con_list">
                     <div class="recent">
@@ -354,24 +354,24 @@
             </div>
             <div style="z-index: 5;" class="home2"></div>
         </div>
-        <div id="network" >
+        <div id="network"    >
             <div id="net_modal">
                 <div id="c_sim"></div>
                 <div id="simglo"></div>
                 <div id="sim_airtel"></div>
             </div>
         </div>
-        <div id="network2" >
+        <div id="network2"    >
             <div id="net_modal2">
 
             </div>
         </div>
-        <div id="network3" >
+        <div id="network3"    >
             <div id="net_modal3">
 
             </div>
         </div>
-        <div id="ans_call" >
+        <div id="ans_call"    >
             <audio id="coco">
                 <source src="audio/temi.mp3" type="audio/mpeg">
                 <source src="audio/omo.mp3" type="audio/mpeg">
@@ -411,7 +411,7 @@
                 </div>
                 <div class="c_cons" id="r_pos">
                     <div id="end_call"></div>
-                    <div style="z-index: 5;" class="home2 home3"></div>
+                    <!-- <div style="z-index: 5;" class="home2 home3"></div> -->
 
                 </div>
             </div>
@@ -419,7 +419,7 @@
         <div id="foot"></div>
         <div id="volume"></div>
         <div id="on"></div>
-        <!-- <div id="black"></div> -->
+        <div id="black"></div>
     </div>
 
 

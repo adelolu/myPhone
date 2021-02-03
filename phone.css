@@ -55,32 +55,35 @@ body{
 
 
 #myPhone{
-    background-color: rgba(0, 0, 0, 0.897);
+    background-color: rgba(0, 0, 0, 0.988);
     height: 600px;
     width: 344px;
     border-radius: 35px;
     padding: 0 5px;
     border: 3px solid silver;
+    /* z-index: -1; */
 }
 #volume{
     position: absolute;
     width: 10px;
     height: 80px;
     border-radius: 7px;
-    background-color: rgba(65, 7, 7, 0.897);
+    background-image: linear-gradient(90deg,transparent,rgba(65, 7, 7, 0.897), rgba(65, 7, 7, 0.897));
+    /* background-color: rgba(65, 7, 7, 0.897); */
     top: 100px;
     left: 365px;
-    z-index: -1;
+    /* z-index: -1; */
 }
 #on{
     position: absolute;
     width: 10px;
     height: 40px;
     border-radius: 7px;
-    background-color: rgba(65, 7, 7, 0.897);
+    background-image: linear-gradient(90deg,transparent,rgba(65, 7, 7, 0.897), rgba(65, 7, 7, 0.897));
+    /* background-color: ; */
     top: 200px;
     left: 365px;
-    z-index: -1;
+    /* z-index: -1; */
 }
 #head{
     display: flex;
@@ -92,7 +95,7 @@ body{
     /* background-color: rgba(0, 0, 0, 0.897); */
 }
 #cam{
-    background-color: rgb(49, 49, 49);
+    background-color: rgb(37, 37, 37);
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -102,7 +105,7 @@ body{
     top: 7px;
     left: 15px;
     box-shadow: 0 0 5px rgb(31, 30, 30) inset;
-    background-color: rgba(36, 35, 35, 0.664);
+    background-color: rgba(36, 35, 35, 0.904);
     width: 50px;
     height: 5px;
     border-radius: 10px;
@@ -120,6 +123,16 @@ body{
     height: 494px;
     width: 344px;
 }
+#black{
+    position: relative;
+    height: 494px;
+    width: 334px;
+    background-color: rgb(0, 0, 0);
+    top: -544px;
+    left:-5px ;
+    z-index: 10;
+}
+
 #foot{
     position: relative;
     /* top: 495px; */
@@ -561,7 +574,7 @@ margin-left: 180px;
     justify-content: space-between;
 }
 .str_call{
-    /* background-color: darkgreen; */
+    background-color: darkgreen;    
     height: inherit;
     width: 15%;
     padding: 20px;
