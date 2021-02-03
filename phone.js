@@ -206,7 +206,7 @@ document.getElementById('network2').addEventListener('click', function () {
 $('.str_call').on('click', function () {
 
     setTimeout(() => {
-        cla = document.getElementsByClassName('str_call')
+        cla = document.getElementsByClassName('tele')
         for (let s = 0; s < cla.length; s++) {
             cla[s].addEventListener('click', real)
 
@@ -228,8 +228,12 @@ $('.str_call').on('click', function () {
 })
 var b = '';
 function real(l) {
-    b = l.target.parentElement.children[0].children[1].children[0].innerText;
+    console.log(l);
+    console.log(l.target.parentElement.previousElementSibling.children[1].children[0].innerText);
+    // b = l.target.parentElement.children[0].children[1].children[0].innerText;
+    b= l.target.parentElement.previousElementSibling.children[1].children[0].innerText;
 }
+
 
 $('#sim_airtel').click(function () {
     var e = document.getElementById('maindiv').innerHTML
@@ -1012,7 +1016,7 @@ $('#simglo').click(function () {
 
                     $('#realcon').hide()
                     $('#main').hide()
-                    $('#ans_call').show(500); 
+                    $('#ans_call').show(500);
                     $('#num_dial').hide();
                     $('#network').hide();
                     $('#network2').hide();
@@ -1057,7 +1061,7 @@ function disp(params) {
     if (a == 'none') {
         $('#black').show()
         // $('#main').hide()
-       
+
 
     } else {
         $('#black').hide()
@@ -1102,5 +1106,5 @@ function drop(event) {
     event.target.clientY
     console.log(event.currentTarget = event.target.clientY);
 
-    event.target.appendChild( event.target.clientX);
+    event.target.appendChild(event.target.clientX);
 }
